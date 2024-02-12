@@ -1,0 +1,61 @@
+/* Homepage.css */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .is-size-2 {
+    color: #333;
+  }
+  
+  .columns {
+    justify-content: center;
+  }
+  
+  .column {
+    padding: 10px;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .image {
+    max-width: 80%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: block; /* Set the image as a block element */
+    margin-left: auto; /* Auto left margin */
+    margin-right: auto; /* Auto right margin */
+  }
+  
+  
+  .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .image-container:hover .info {
+    opacity: 1;
+  }
+  
+  .image-container:hover .nft-name,
+  .image-container:hover .price,
+  .image-container:hover .highest-bid {
+    color: green; /* Set the text color to green */
+    font-weight: bold;
+  }
+  

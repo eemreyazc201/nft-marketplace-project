@@ -1,0 +1,82 @@
+body {
+  position: relative; /* Add this to position the pseudo-element relative to the body */
+  background: url("/public/images/bg-1.png") no-repeat;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(7, 7, 9, 0.7); /* Adjust the alpha value as needed */
+}
+
+.title {
+  color: white;
+  margin-bottom: 1 rem;
+}
+
+.box {
+  margin-top: 50px;
+}
+
+.panel {
+  margin-top: 2em;
+}
+
+.panel-heading {
+  xbackground-image: linear-gradient(to left,#38052F, #070709);
+  background-color: black;
+  color: white;
+}
+
+.address-box {
+  padding: 3em;
+}
+
+.box .title {
+  color: ##ffd700;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.navbar .navbar-item {
+  color: white;
+}
+.navbar .navbar-it {
+  color: white;
+}
+
+.navbar .navbar-item:hover {
+  color: white;
+  background-color: #ffd700;
+}
+
+
+.connect-wallet span {
+  color: ##ffd700;
+}
+.connect-wallet:hover {
+  background-color: #e1e1e1 !important;
+}
+
+.container.main-content {
+  max-width: 1000px !important;
+}
+
+
+
+.withdraw-error {
+  color: red;
+}
+
+.withdraw-success {
+  color: green;
+}
