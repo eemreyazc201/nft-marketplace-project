@@ -136,6 +136,7 @@ function App() {
             <div className="navbar-start">
               <a href="#store" className="navbar-item">Store</a>
               <a href="#my-nfts" className="navbar-item">My NFTs</a>
+              <a href="#mint-nft" className="navbar-item">Mint NFT</a>
             </div>
             <div className="navbar-end">
               <div className="navbar-item">
