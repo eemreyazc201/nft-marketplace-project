@@ -5,10 +5,9 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
-    uint private NFTcounter = 1;
+    uint private NFTCounter = 1;
     uint private collectionCounter = 1;
     uint private feePercent = 5;
 
@@ -40,9 +39,10 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     mapping (uint => Item) public Items;
     mapping (uint => Collection) public Collections;
 
-    function createCollection (uint _NFTAmount, string memory _name, string memory _description) public {
+    function createCollection (string memory _name, string memory _description) public {
+        uint [] memory temp;
         uint collectionID = collectionCounter; collectionCounter++;
-        Collections[collectionID] = Collection (collectionID, 0, _NFTAmount, _name, _description, msg.sender, new uint [], false);
+        Collections[collectionID] = Collection (collectionID, 0, _name, _description, payable(msg.sender), temp, false);
     }
 
     function buyCollection (uint _collectionID) public payable {
@@ -76,10 +76,10 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     }
 
     function safeMint (string memory _tokenURI, string memory _name, string memory _description, uint _collectionID) public {
-        uint256 tokenID = NFTCounter; NFTcounter++;
+        uint256 tokenID = NFTCounter; NFTCounter++;
         _safeMint(msg.sender, tokenID);
         _setTokenURI(tokenID, _tokenURI);
-        Items[tokenID] = Item (_name, _description, _collectionID, false, payable(msg.sender), payable(address(0)), 0, 0, 0, 0);
+        Items[tokenID] = Item (_name, _description, _collectionID, false, payable(msg.sender), payable(address(0)), 0, 0, 0);
         Collections[_collectionID].NFTs.push(tokenID);
     }
 
@@ -107,7 +107,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         Items[_tokenID].collectionID = 0;
         for (uint i=1; i < Collections[Items[_tokenID].collectionID].NFTs.length; i++) {
             if (Collections[Items[_tokenID].collectionID].NFTs[i] == _tokenID) {
-                Collections[Items[_tokenID].collectionID].NFTs[index] = Collections[Items[_tokenID].collectionID].NFTs[Collections[Items[_tokenID].collectionID].NFTs.length - 1];
+                Collections[Items[_tokenID].collectionID].NFTs[i] = Collections[Items[_tokenID].collectionID].NFTs[Collections[Items[_tokenID].collectionID].NFTs.length - 1];
                 Collections[Items[_tokenID].collectionID].NFTs.pop();
             }
         }
@@ -144,7 +144,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         string NFTName;
         string NFTDescription;
         uint tokenID;
-        uint tokenURI;
+        string tokenURI;
         bool isNFTListed;
         address payable highestBidder;
         uint highestBid;
@@ -162,7 +162,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     }
 
     function listMyNFTs () public returns (ParentOutputStruct [] memory) {
-        ParentOutputStruct [] output;
+        ParentOutputStruct [] storage output;
 
         for (uint i = 1; i < collectionCounter; i++) {
             if (Collections[i].owner == msg.sender) {
@@ -189,7 +189,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
             }
         }
 
-        for (uint i = 1; i < NFTcounter; i++) {
+        for (uint i = 1; i < NFTCounter; i++) {
             if (Items[i].owner == msg.sender && Items[i].collectionID == 0) {
                 ParentOutputStruct memory parent;
                 parent.collectionName = "No Collection";
@@ -217,5 +217,14 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     function tokenURI (uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface (bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 }
