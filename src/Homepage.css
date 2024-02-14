@@ -1,66 +1,35 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
 /* Homepage.css */
-
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    
-  }
-  
-  .is-size-2 {
-    color: #333;
-  }
-  
-  .columns {
-    justify-content: center;
-  }
-  
-  .column {
-    padding: 10px;
-  }
-  
-  .image-container {
-    position: relative;
-  }
-  
-  .image {
-    max-width: 80%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    display: block; /* Set the image as a block element */
-    margin-left: auto; /* Auto left margin */
-    margin-right: auto; /* Auto right margin */
-  }
-  
-  
-  .info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    opacity: 0.7; /* Set an initial opacity */
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .image-container:hover .info {
-    opacity: 1;
-  }
-  
-  .image-container:hover .nft-name,
-  .image-container:hover .price,
-  .image-container:hover .highest-bid {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .is-size-2{
-    color: white;
-    font-weight: bold;
-  }
+  @apply max-w-[1200px] mx-auto my-0;
+}
+.is-size-2 {
+  @apply text-[#333] text-[white] font-[bold];
+}
+.columns {
+  @apply justify-center;
+}
+.column {
+  @apply p-2.5;
+}
+.image-container {
+  @apply relative;
+}
+.image {
+  @apply max-w-[80%] h-[200px] object-cover shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-transform duration-[0.3s] ease-[ease-in-out] block mx-auto rounded-lg; /* Set the image as a block element */ /* Auto left margin */ /* Auto right margin */
+}
+.info {
+  @apply absolute bg-[rgba(0,0,0,0.8)] text-[white] opacity-70 transition-opacity duration-[0.3s] ease-[ease-in-out] p-2.5 rounded-br-lg rounded-bl-lg bottom-0 inset-x-0; /* Set an initial opacity */
+}
+.image-container:hover .info {
+  @apply opacity-100;
+}
+.image-container:hover .nft-name,
+.image-container:hover .price,
+.image-container:hover .highest-bid {
+  @apply text-[green] font-[bold];
+}

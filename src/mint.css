@@ -1,0 +1,20 @@
+.mint-container {
+  @apply flex flex-col items-center justify-center h-screen;
+}
+.mint-title {
+  @apply text-center text-[white] mb-5;
+}
+.mint-form {
+  @apply max-w-[400px] bg-[#CCCCFF] shadow-[0_0_10px_rgba(0,0,0,0.1)] p-5 rounded-lg; /* Set the background color to green */
+}
+.mint-form label {
+  @apply block mb-2;
+}
+.mint-form input,
+.mint-form textarea,
+.mint-form button {
+  @apply w-full box-border border rounded text-sm mb-4 p-2.5 border-solid border-[#ccc];
+}
+.mint-form button {
+  @apply bg-white text-[#4caf50] cursor-pointer transition-[background-color] duration-[0.3s] ease-[ease] hover:bg-[#e1e1e1] hover:text-[#4caf50]; /* Set the button background color */ /* Set the button text color */
+}

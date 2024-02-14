@@ -1,5 +1,3 @@
-// Homepage.js
-
 import React from "react";
 import "./Homepage.css";
 
@@ -84,8 +82,8 @@ const Homepage = () => {
           </div>
         </div>
 
-{/* NFT 2 */}
-<div className="column is-one-quarter">
+        {/* NFT 2 */}
+        <div className="column is-one-quarter">
           <div className="image-container">
             <img src="/images/nft11.png" alt="NFT 2" className="image" />
             <div className="info">
@@ -97,8 +95,8 @@ const Homepage = () => {
           </div>
         </div>
 
-{/* NFT 2 */}
-<div className="column is-one-quarter">
+        {/* NFT 2 */}
+        <div className="column is-one-quarter">
           <div className="image-container">
             <img src="/images/nft3.png" alt="NFT 2" className="image" />
             <div className="info">
@@ -109,10 +107,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-{/* NFT 2 */}
-
-
-
+        {/* NFT 2 */}
 
         {/* Continue the pattern for NFT 3, NFT 4, etc. */}
       </div>
@@ -121,4 +116,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-
