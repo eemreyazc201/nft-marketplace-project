@@ -12,7 +12,7 @@ contract BEETOKEN is ERC20, ERC20Burnable, Ownable, ERC20Permit {
         Ownable(initialOwner)
         ERC20Permit("BEE TOKEN")
     {
-        _mint(msg.sender, 1000 * 10 ** decimals());
+        _mint(msg.sender, 1000 * (10 ** decimals()));
     }
 
     function mint(address to, uint256 amount) public onlyOwner {
