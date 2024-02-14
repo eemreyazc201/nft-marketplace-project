@@ -8,11 +8,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
-    Counters.Counter public NFTcounter;
-    Counters.Counter public collectionCounter;
+    uint private NFTcounter = 1;
+    uint private collectionCounter = 1;
     uint private feePercent = 5;
 
-    constructor(address initialOwner) ERC721("ITU_Marketplace", "BEE") Ownable(initialOwner) {}
+    constructor() ERC721("ITU_Marketplace", "BEE") Ownable(msg.sender) {}
 
     struct Item {
         string name;
@@ -41,8 +41,8 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     mapping (uint => Collection) public Collections;
 
     function createCollection (uint _NFTAmount, string memory _name, string memory _description) public {
-        uint collectionID = collectionCounter.current(); collectionCounter.increment();
-        Collections[collectionID] = Collection (collectionID, NULL, _NFTAmount, _name, _description, msg.sender, new uint [], false);
+        uint collectionID = collectionCounter; collectionCounter++;
+        Collections[collectionID] = Collection (collectionID, 0, _NFTAmount, _name, _description, msg.sender, new uint [], false);
     }
 
     function buyCollection (uint _collectionID) public payable {
@@ -52,8 +52,8 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         require(Collections[_collectionID].isListed, "The collection is not listed");
         Collections[_collectionID].owner.transfer(msg.value-(msg.value*feePercent/100));
         Collections[_collectionID].owner = payable(msg.sender);
-        Collections[_collectionID].bundle_price = NULL;
-        for (uint tokenID = 0; tokenID < Collections[_collectionID].NFTs.length; tokenID++) {               
+        Collections[_collectionID].bundle_price = 0;
+        for (uint tokenID = 1; tokenID < Collections[_collectionID].NFTs.length; tokenID++) {               
             IERC721 token = IERC721(address(this));
             token.transferFrom(Collections[_collectionID].owner, msg.sender, tokenID);
             Items[tokenID].owner = payable(msg.sender);
@@ -76,10 +76,10 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     }
 
     function safeMint (string memory _tokenURI, string memory _name, string memory _description, uint _collectionID) public {
-        uint256 tokenID = NFTCounter.current(); NFTcounter.increment();
+        uint256 tokenID = NFTCounter; NFTcounter++;
         _safeMint(msg.sender, tokenID);
         _setTokenURI(tokenID, _tokenURI);
-        Items[tokenID] = Item (_name, _description, _collectionID, false, payable(msg.sender), payable(address(NULL)), NULL, NULL, NULL, NULL);
+        Items[tokenID] = Item (_name, _description, _collectionID, false, payable(msg.sender), payable(address(0)), 0, 0, 0, 0);
         Collections[_collectionID].NFTs.push(tokenID);
     }
 
@@ -100,12 +100,12 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         Items[_tokenID].owner.transfer(Items[_tokenID].highestBid*(1 - feePercent/100));
         Items[_tokenID].isListed = false;
         Items[_tokenID].owner = Items[_tokenID].highestBidder;
-        Items[_tokenID].highestBidder = payable(address(NULL));
-        Items[_tokenID].highestBid = NULL;
-        Items[_tokenID].startingPrice = NULL;
-        Items[_tokenID].deadline = NULL;
-        Items[_tokenID].collectionID = NULL;
-        for (uint i=0; i < Collections[Items[_tokenID].collectionID].NFTs.length; i++) {
+        Items[_tokenID].highestBidder = payable(address(0));
+        Items[_tokenID].highestBid = 0;
+        Items[_tokenID].startingPrice = 0;
+        Items[_tokenID].deadline = 0;
+        Items[_tokenID].collectionID = 0;
+        for (uint i=1; i < Collections[Items[_tokenID].collectionID].NFTs.length; i++) {
             if (Collections[Items[_tokenID].collectionID].NFTs[i] == _tokenID) {
                 Collections[Items[_tokenID].collectionID].NFTs[index] = Collections[Items[_tokenID].collectionID].NFTs[Collections[Items[_tokenID].collectionID].NFTs.length - 1];
                 Collections[Items[_tokenID].collectionID].NFTs.pop();
@@ -120,10 +120,10 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         require(block.timestamp < Items[_tokenID].deadline, "The auction already finished");
         Items[_tokenID].isListed = false;
         Items[_tokenID].highestBidder.transfer(Items[_tokenID].highestBid);
-        Items[_tokenID].highestBidder = payable(address(NULL));
-        Items[_tokenID].highestBid = NULL;
-        Items[_tokenID].startingPrice = NULL;
-        Items[_tokenID].deadline = NULL;
+        Items[_tokenID].highestBidder = payable(address(0));
+        Items[_tokenID].highestBid = 0;
+        Items[_tokenID].startingPrice = 0;
+        Items[_tokenID].deadline = 0;
         token.transferFrom(address(this), msg.sender, _tokenID);
     }
 
@@ -164,7 +164,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     function listMyNFTs () public returns (ParentOutputStruct [] memory) {
         ParentOutputStruct [] output;
 
-        for (uint i = 0; i < collectionCounter.current(); i++) {
+        for (uint i = 1; i < collectionCounter; i++) {
             if (Collections[i].owner == msg.sender) {
                 ParentOutputStruct memory parent;
                 parent.collectionName = Collections[i].name;
@@ -189,12 +189,12 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
             }
         }
 
-        for (uint i = 0; i < NFTcounter.current(); i++) {
-            if (Items[i].owner == msg.sender && Items[i].collectionID == NULL) {
+        for (uint i = 1; i < NFTcounter; i++) {
+            if (Items[i].owner == msg.sender && Items[i].collectionID == 0) {
                 ParentOutputStruct memory parent;
                 parent.collectionName = "No Collection";
                 parent.collectionDescription = "No Collection";
-                parent.bundle_price = NULL;
+                parent.bundle_price = 0;
                 parent.owner = Items[i].owner;
                 parent.isCollectionListed = false;
                 ChildOutputStruct memory child;
