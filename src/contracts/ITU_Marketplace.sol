@@ -40,8 +40,8 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     mapping (uint => Collection) public Collections;
 
     function createCollection (string memory _name, string memory _description) public {
-        uint [] memory temp;
         uint collectionID = collectionCounter; collectionCounter++;
+        uint [] memory temp;
         Collections[collectionID] = Collection (collectionID, 0, _name, _description, payable(msg.sender), temp, false);
     }
 
@@ -53,10 +53,10 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         Collections[_collectionID].owner.transfer(msg.value-(msg.value*feePercent/100));
         Collections[_collectionID].owner = payable(msg.sender);
         Collections[_collectionID].bundle_price = 0;
-        for (uint tokenID = 1; tokenID < Collections[_collectionID].NFTs.length; tokenID++) {               
+        for (uint i = 0; i < Collections[_collectionID].NFTs.length; i++) {               
             IERC721 token = IERC721(address(this));
-            token.transferFrom(Collections[_collectionID].owner, msg.sender, tokenID);
-            Items[tokenID].owner = payable(msg.sender);
+            token.transferFrom(Collections[_collectionID].owner, msg.sender, Collections[_collectionID].NFTs[i]);
+            Items[Collections[_collectionID].NFTs[i]].owner = payable(msg.sender);
         }
     }
 
@@ -161,8 +161,8 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         ChildOutputStruct [] elements;
     }
 
-    function listMyNFTs () public returns (ParentOutputStruct [] memory) {
-        ParentOutputStruct [] storage output;
+    function listMyNFTs () public view returns (ParentOutputStruct [] memory) {
+        ParentOutputStruct [] memory output;
 
         for (uint i = 1; i < collectionCounter; i++) {
             if (Collections[i].owner == msg.sender) {
