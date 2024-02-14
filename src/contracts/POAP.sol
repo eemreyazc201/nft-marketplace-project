@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract ITUPOAP is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     uint private NFTcounter;
-    uint price_perPoap =  0.01 ether;
+    uint price_perPoap = 10000;
 
     constructor() ERC721("ITUPOAP", "BEP") Ownable(msg.sender) {}
 
@@ -19,13 +19,27 @@ contract ITUPOAP is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     mapping (uint => Poap) public Items;
 
-   function safeMint(string memory _tokenURI, string memory _name, string memory _description) public payable {
+    function safeMint(string memory _tokenURI, string memory _name, string memory _description) public payable {
         uint256 tokenID = NFTcounter; NFTcounter++;
+        require((msg.value/price_perPoap) > 0, "Invalid token quantity");
 
         for(uint i = 0; i < (msg.value/price_perPoap); i++) { 
                 _safeMint(msg.sender, tokenID);
                 _setTokenURI(tokenID, _tokenURI);
                 Items[tokenID] = Poap(_name, _description);
         }   
+    }
+
+    function supportsInterface (bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
+
+      function tokenURI (uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
+        return super.tokenURI(tokenId);
     }
 }
