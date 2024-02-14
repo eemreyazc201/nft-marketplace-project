@@ -62,6 +62,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     function setCollectionPrice (uint _collectionID, uint _price) public {
         require(msg.sender == Collections[_collectionID].owner, "You are not the owner of this collection");
+        Collections[_collectionID].isListed = true;
         Collections[_collectionID].bundle_price = _price;
     }
 
@@ -76,6 +77,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     }
 
     function safeMint (string memory _tokenURI, string memory _name, string memory _description, uint _collectionID) public {
+        require(_collectionID < collectionCounter, "There is no collection you select");
         uint256 tokenID = NFTCounter; NFTCounter++;
         _safeMint(msg.sender, tokenID);
         _setTokenURI(tokenID, _tokenURI);
@@ -115,7 +117,7 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     function cancelAuction (uint _tokenID) public {
         IERC721 token = IERC721(address(this));
-        require(token.ownerOf(_tokenID) == msg.sender, "You are not the owner of this NFT");
+        require(Items[_tokenID].owner == msg.sender, "You are not the owner of this NFT");
         require(Items[_tokenID].isListed == true, "This NFT is not listed");
         require(block.timestamp < Items[_tokenID].deadline, "The auction already finished");
         Items[_tokenID].isListed = false;
@@ -138,81 +140,6 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         Items[_tokenID].highestBidder.transfer(Items[_tokenID].highestBid);
         Items[_tokenID].highestBidder = payable(msg.sender);
         Items[_tokenID].highestBid = msg.value;
-    }
-
-    struct ChildOutputStruct {
-        string NFTName;
-        string NFTDescription;
-        uint tokenID;
-        string tokenURI;
-        bool isNFTListed;
-        address payable highestBidder;
-        uint highestBid;
-        uint startingPrice;
-        uint deadline;
-    }
-
-    struct ParentOutputStruct {
-        string collectionName;
-        string collectionDescription;
-        uint bundle_price;
-        address payable owner;
-        bool isCollectionListed;
-        ChildOutputStruct [] elements;
-    }
-
-    function listMyNFTs () public view returns (ParentOutputStruct [] memory) {
-        ParentOutputStruct [] memory output;
-
-        for (uint i = 1; i < collectionCounter; i++) {
-            if (Collections[i].owner == msg.sender) {
-                ParentOutputStruct memory parent;
-                parent.collectionName = Collections[i].name;
-                parent.collectionDescription = Collections[i].description;
-                parent.bundle_price = Collections[i].bundle_price;
-                parent.owner = Collections[i].owner;
-                parent.isCollectionListed = Collections[i].isListed;
-                for (uint j = 0; j < Collections[i].NFTs.length; j++) {
-                    ChildOutputStruct memory child;
-                    child.NFTName = Items[Collections[i].NFTs[j]].name;
-                    child.NFTDescription = Items[Collections[i].NFTs[j]].description;
-                    child.tokenID = Collections[i].NFTs[j];
-                    child.tokenURI = tokenURI(Collections[i].NFTs[j]);
-                    child.isNFTListed = Items[Collections[i].NFTs[j]].isListed;
-                    child.highestBidder = Items[Collections[i].NFTs[j]].highestBidder;
-                    child.highestBid = Items[Collections[i].NFTs[j]].highestBid;
-                    child.startingPrice = Items[Collections[i].NFTs[j]].startingPrice;
-                    child.deadline = Items[Collections[i].NFTs[j]].deadline;
-                    parent.elements.push(child);
-                }
-                output.push(parent);
-            }
-        }
-
-        for (uint i = 1; i < NFTCounter; i++) {
-            if (Items[i].owner == msg.sender && Items[i].collectionID == 0) {
-                ParentOutputStruct memory parent;
-                parent.collectionName = "No Collection";
-                parent.collectionDescription = "No Collection";
-                parent.bundle_price = 0;
-                parent.owner = Items[i].owner;
-                parent.isCollectionListed = false;
-                ChildOutputStruct memory child;
-                child.NFTName = Items[i].name;
-                child.NFTDescription = Items[i].description;
-                child.tokenID = i;
-                child.tokenURI = tokenURI(i);
-                child.isNFTListed = Items[i].isListed;
-                child.highestBidder = Items[i].highestBidder;
-                child.highestBid = Items[i].highestBid;
-                child.startingPrice = Items[i].startingPrice;
-                child.deadline = Items[i].deadline;
-                parent.elements.push(child);
-                output.push(parent);
-            }
-        }
-
-        return output;
     }
 
     function tokenURI (uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
