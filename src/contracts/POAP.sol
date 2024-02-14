@@ -30,6 +30,15 @@ contract ITUPOAP is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         }   
     }
 
+    function hasPoap(uint256 tokenID) public view returns (bool) {
+        return bytes(Items[tokenID].name).length > 0;
+}
+
+    function claim(uint256 tokenID) public {
+        require(!hasPoap(tokenID), "You already own a POAP");
+        safeTransferFrom(ownerOf(tokenID), msg.sender, tokenID);
+    }
+
     function supportsInterface (bytes4 interfaceId)
         public
         view
