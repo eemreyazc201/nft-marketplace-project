@@ -23,8 +23,7 @@ contract ITUPOAP is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     mapping (uint => Poap) public Items;
 
-    function safeMint(string memory _tokenURI, string memory _name, string memory _description,
-    uint _amount) public payable {
+    function safeMint(string memory _tokenURI, string memory _name, string memory _description, uint _amount) public payable {
         uint price_perPoapIBE = ((msg.value*(1-fee_Percent))/_amount)/1000; //Burda aslında 1000 IBE 1Ether
         uint256 tokenID = NFTcounter; NFTcounter++;                         //IBE = BEE Token
         require((msg.value*(1-fee_Percent)) > 0, "Invalid token quantity"); //Burda 0 yerine 
@@ -48,11 +47,6 @@ contract ITUPOAP is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     function claim(uint256 tokenID) public {
         require(!hasPoap(tokenID), "You already own a POAP");
         safeTransferFrom(ownerOf(tokenID), msg.sender, tokenID);
-    }
-
-    function swap_Poap(uint256 tokenID) public {
-        require(hasPoap(tokenID), "You already own a POAP");
-        safeTransferFrom(address(this), msg.sender, Items[tokenID].price);
     }
 
     function get_Price(uint256 tokenID) public view returns (uint) { //Fonksiyon yazdım çünkü
