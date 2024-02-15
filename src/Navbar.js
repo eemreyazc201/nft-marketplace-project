@@ -1,8 +1,22 @@
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { WagmiProvider } from "wagmi";
-import { sepolia, goerli, mainnet } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  getDefaultConfig,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 
 // 0. Setup queryClient for WAGMIv2
 const queryClient = new QueryClient();
@@ -15,7 +29,7 @@ if (!projectId) {
 }
 
 // 2. Create wagmiConfig
-const wagmiConfig = defaultWagmiConfig({
+/*const wagmiConfig = defaultWagmiConfig({
   chains: [mainnet, sepolia, goerli],
   projectId,
   metadata: {
@@ -24,20 +38,29 @@ const wagmiConfig = defaultWagmiConfig({
     url: "",
     icons: [],
   },
+});*/
+
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
 // 3. Create modal
-createWeb3Modal({
+/*createWeb3Modal({
   wagmiConfig,
   projectId,
   themeMode: "dark",
   themeVariables: {},
-});
+});*/
 
 export default function Navbar() {
   return (
-    <WagmiProvider config={wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
+    <WagmiProvider config={config}>
+       <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
         {
           <nav className="navbar bg-black">
             <div className="container flex justify-between items-center">
@@ -66,10 +89,11 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <w3m-button />
+              <ConnectButton />
             </div>
           </nav>
         }
+        </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
