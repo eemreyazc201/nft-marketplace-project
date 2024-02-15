@@ -21,4 +21,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.env REACT_APP_PROJECT_ID=87b19285bd7e81f2a2dc76728f6eb331
+.env
