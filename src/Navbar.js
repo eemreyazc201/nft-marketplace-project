@@ -6,6 +6,9 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultConfig,
   RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+  midnightTheme
 } from '@rainbow-me/rainbowkit';
 import {
   mainnet,
@@ -60,7 +63,10 @@ export default function Navbar() {
   return (
     <WagmiProvider config={config}>
        <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <RainbowKitProvider theme={{
+          lightMode: lightTheme({...lightTheme.accentColors.orange, overlayBlur: 'small'}),
+          darkMode: midnightTheme({...midnightTheme.accentColors.orange, overlayBlur: 'small'}),
+        }}>
         {
           <nav className="navbar bg-black">
             <div className="container flex justify-between items-center">
