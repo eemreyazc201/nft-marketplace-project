@@ -1,4 +1,5 @@
 import "./App.css";
+import { useReadContract } from 'wagmi'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 import Navbar from "./Navbar";

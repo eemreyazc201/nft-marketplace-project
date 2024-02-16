@@ -1,6 +1,6 @@
 body {
-  @apply relative bg-[center_bottom] bg-no-repeat bg-cover before:content-[""] before:absolute before:bg-[rgba(7,7,9,0.7)] before:inset-0;
-  background: url("/public/images/bg-1.png") no-repeat;
+  
+  background-color: #CACACA; /* Change to the desired color */
 }
 .title {
   @apply text-[white] mb-[1_rem];
