@@ -65,7 +65,7 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-
+          
           {/* Continue the pattern for other NFTs */}
           {/* Row 3 */}
           <div className="column is-half">

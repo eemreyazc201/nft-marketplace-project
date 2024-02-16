@@ -1,0 +1,4 @@
+.bg-fixed {
+    @apply bg-[url(/public/images/bg-1.png)] bg-no-repeat bg-cover bg-center h-[50vh] justify-center;
+    /* Set the height of the footer to be 50% of the viewport height */
+  }
