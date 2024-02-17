@@ -3,18 +3,28 @@
 }
 
 .is-size-2 {
-  @apply mr-[-300px] text-[white] text-center font-[bold] text-xl; /* Adjust the text-xl class for the desired font size */
+  @apply mr-[-300px] text-[white] text-center font-[extrabold] text-xl; /* Adjust the text-xl class for the desired font size */
   margin-left: -500px;
   margin-top: 70px;
+ 
+}
+.solo{
+  @apply mr-[-300px] text-[white] text-center font-[bold] text-9xl; /* Adjust the text-xl class for the desired font size */
+  margin-left: -500px;
+  margin-top: 10px;
+ 
 }
 .lower-left-image {
+  
   position: absolute;
   bottom: 0;
   left: 0;
   max-width: 40%; /* Adjust the maximum width if needed */
   height: auto; /* Maintain aspect ratio */
-  margin-bottom: 170px;
+  margin-bottom: 50px;
   margin-left: 80px;
+  height: 500px;
+  width: 800px;
 }
 
 .columns {
@@ -27,7 +37,7 @@
   @apply relative;
 }
 .image {
-  @apply w-[200px] h-[200px] object-cover block mb-[-30px] m-auto rounded-lg;
+  @apply w-[300px] h-[200px] object-cover block mb-[-30px] m-auto rounded-lg;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 .overlay {
@@ -73,4 +83,50 @@
 }
 .column:nth-child(7) {
   margin-left: -100px; /* Adjust this value as needed */
+}
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: -310px;
+}
+
+.create-button {
+  background-color: #FF9900;
+  color: #F0F0F0;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 20px; /* Adjust this value for more or less roundness */
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif; /* Set font-family to Inter */
+  font-weight: bold; /* Set font-weight to bold */
+  font-style: italic; /* Set font-style to italic */
+  transition: background-color 0.3s ease-in-out;
+ 
+}
+
+.upload-button {
+  background-color: #CACACA;
+  color: #FF9900;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 2px solid #FF9900; /* Border color for the edges */
+  border-radius: 20px; /* Adjust this value for more or less roundness */
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif; /* Set font-family to Inter */
+  font-weight: bold; /* Set font-weight to bold */
+  font-style: italic; /* Set font-style to italic */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.create-button:hover {
+  background-color: #FFD700; /* Adjust this color for the hover effect */
+}
+
+.upload-button:hover {
+  background-color: #B0B0B0; /* Adjust this color for the hover effect */
+  border-color: #FFD700; /* Border color for the edges on hover */
 }
