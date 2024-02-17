@@ -3,15 +3,18 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
+contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
     uint private NFTCounter = 1;
     uint private collectionCounter = 1;
     uint private feePercent = 5;
 
-    constructor() ERC721("ITU_Marketplace", "BEE") Ownable(msg.sender) {}
+    function setFeePercent (uint _feePercent) public onlyOwner {
+        fee_Percent = _feePercent;
+    }
+
+    constructor() ERC721("BEE_NFT", "BEENFT") Ownable(msg.sender) {}
 
     struct Item {
         string name;
@@ -70,10 +73,6 @@ contract ITU_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         require(msg.sender == Collections[_collectionID].owner, "You are not the owner of this collection");
         require(msg.sender == Items[_tokenID].owner, "You are not the owner of this NFT");
         Items[_tokenID].collectionID = _collectionID;
-    }
-
-    function setFeePercent (uint _feePercent) public onlyOwner {
-        feePercent = _feePercent;
     }
 
     function safeMint (string memory _tokenURI, string memory _name, string memory _description, uint _collectionID) public {
