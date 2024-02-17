@@ -8,7 +8,7 @@ import {
   lightTheme,
   midnightTheme
 } from '@rainbow-me/rainbowkit';
-import { mainnet, polygon, optimism, arbitrum, base, zora } from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum, base, zora, sepolia } from 'wagmi/chains';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const queryClient = new QueryClient();
@@ -21,7 +21,7 @@ if (!projectId) {
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, sepolia],
   ssr: true,
 });
 
