@@ -8,7 +8,7 @@ import {
   lightTheme,
   midnightTheme
 } from '@rainbow-me/rainbowkit';
-import { mainnet, polygon, optimism, arbitrum, base, zora } from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum, base, zora, sepolia } from 'wagmi/chains';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const queryClient = new QueryClient();
@@ -21,7 +21,7 @@ if (!projectId) {
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, sepolia],
   ssr: true,
 });
 
@@ -33,7 +33,7 @@ export default function Navbar() {
           lightMode: lightTheme({...lightTheme.accentColors.orange, overlayBlur: 'small'}),
           darkMode: midnightTheme({...midnightTheme.accentColors.orange, overlayBlur: 'small'}),
         }}>
-          <nav style={{ backgroundColor: '#F0F0F0', borderBottom: '2px solid #FF9900', height: '50px' }} className="navbar">
+          <nav style={{ backgroundColor: '#F0F0F0', borderBottom: '2px solid #FF9900', height: '50px', fontWeight: 'bolder' }} className="navbar">
             <div className="container flex justify-between items-center" style={{ alignItems: 'center', marginTop: '2px' }}>
               <div className="navbar-brand">
                 <a
@@ -43,21 +43,19 @@ export default function Navbar() {
                 >
                   <h1 className="navbar-item is-size-5 mb-0" style={{ color: '#FF9900' }}>ITU BLOCKCHAIN</h1>
                 </a>
-                <div id="navbarMenu" className="navbar-menu items-center">
-                  <div className="navbar-start">
-                    <a href="/" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
-                      Home
-                    </a>
-                    <a href="store" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
-                      Store
-                    </a>
-                    <a href="my-nfts" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
-                      My NFTs
-                    </a>
-                    <a href="mint-nft" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
-                      Mint NFT
-                    </a>
-                  </div>
+              </div>
+              <div className="navbar-menu items-center">
+                <div className="navbar-end" style={{ marginRight: '10px'}}>
+                  <a href="/" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                    Home
+                  </a>
+                  <a href="collections" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                    Collections
+                  </a>
+                
+                  <a href="mint-nft" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                    Mint NFT
+                  </a>
                 </div>
               </div>
               <ConnectButton style={{ backgroundColor: '#FF9900', color: 'white' }} />
