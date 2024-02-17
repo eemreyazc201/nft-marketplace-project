@@ -33,28 +33,28 @@ export default function Navbar() {
           lightMode: lightTheme({...lightTheme.accentColors.orange, overlayBlur: 'small'}),
           darkMode: midnightTheme({...midnightTheme.accentColors.orange, overlayBlur: 'small'}),
         }}>
-          <nav style={{ backgroundColor: '#F0F0F0', borderBottom: '2px solid #FF9900' }} className="navbar">
-            <div className="container flex justify-between items-center">
+          <nav style={{ backgroundColor: '#F0F0F0', borderBottom: '2px solid #FF9900', height: '50px' }} className="navbar">
+            <div className="container flex justify-between items-center" style={{ alignItems: 'center', marginTop: '2px' }}>
               <div className="navbar-brand">
                 <a
                   href="https://www.itublockchain.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <h1 className="navbar-item is-size-4 mb-0"style={{ color: '#FF9900' }}>ITU BLOCKCHAIN</h1>
+                  <h1 className="navbar-item is-size-5 mb-0" style={{ color: '#FF9900' }}>ITU BLOCKCHAIN</h1>
                 </a>
                 <div id="navbarMenu" className="navbar-menu items-center">
                   <div className="navbar-start">
-                    <a href="/" className="navbar-item" style={{ color: '#FF9900' }}>
+                    <a href="/" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
                       Home
                     </a>
-                    <a href="store" className="navbar-item" style={{ color: '#FF9900' }}>
+                    <a href="store" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
                       Store
                     </a>
-                    <a href="my-nfts" className="navbar-item" style={{ color: '#FF9900' }}>
+                    <a href="my-nfts" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
                       My NFTs
                     </a>
-                    <a href="mint-nft" className="navbar-item" style={{ color: '#FF9900' }}>
+                    <a href="mint-nft" className="navbar-item" style={{ color: '#FF9900', fontSize: '14px' }}>
                       Mint NFT
                     </a>
                   </div>

@@ -6,11 +6,16 @@ const Homepage = () => {
     <div className="container mt-6 flex justify-end">
       <div>
         <h2 className="is-size-2 has-text-centered" style={{ color: '#FF9900' }}>
-          START YOUR NFT JOURNEY HERE
+        <em>START YOUR <b> NFT</b> <br></br><br></br>
+          JOURNEY HERE</em>
+          
         </h2>
+       
+     
+        <img src="/images/nftpicture.png" alt="NFT Picture" class="lower-left-image"></img>
       </div>
       <div className="w-2/3">
-        <h2 className="is-size-2 has-text-centered mb-4">Top Picks</h2>
+        <h2 className="is-size-3 has-text-centered mb-4" style={{ color: '#FF9900', marginLeft: '420px' }}>Top Picks</h2>
         <div className="columns is-multiline">
           {/* Row 1 */}
           <div className="column is-half custom-margin-right">

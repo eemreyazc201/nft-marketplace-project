@@ -1,4 +1,31 @@
-.bg-fixed {
-    @apply bg-[url(/public/images/bg-1.png)] bg-no-repeat bg-cover bg-center h-[50vh] justify-center;
-    /* Set the height of the footer to be 50% of the viewport height */
+/* Add these styles to your CSS or create a new CSS file */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
   }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand img {
+    width: 40px; /* Adjust the size as needed */
+    margin-left: 10px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  .social-icons a:hover {
+    color: #55acee; /* Change the color to match the social media platform */
+  }
+  
