@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -14,7 +15,7 @@ contract POAP_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, ERC20, ER
     uint private beeExchangeRate = 1000; // 1000 BEE = 1 ETH
 
     function setFeePercent (uint _feePercent) public onlyOwner {
-        fee_Percent = _feePercent;
+        feePercent = _feePercent;
     }
 
     function setFeePercent (uint _beeExchangeRate) public onlyOwner {
@@ -30,7 +31,7 @@ contract POAP_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, ERC20, ER
         uint amount;
         address creator;
         uint poapValue; // in terms of Wei
-        payable address [] participants;
+        address payable [] participants;
     }
 
     mapping (uint => Collection) public POAPs;
@@ -65,7 +66,7 @@ contract POAP_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, ERC20, ER
             }
         } 
         
-        safeTransferFrom(ownerOf(_tokenID), msg.sender, tokenID); 
+        safeTransferFrom(ownerOf(_tokenID), msg.sender, _tokenID); 
         POAPs[_tokenID].participants.push(payable(msg.sender));
         emit Claim (_tokenID, POAPs[_tokenID].collectionID, msg.sender);
     }
@@ -82,13 +83,13 @@ contract POAP_Marketplace is ERC721, ERC721URIStorage, ERC721Burnable, ERC20, ER
         require(balanceOf(msg.sender) >= _amountOfBEE, "Insufficient BEE balance");
         _burn(msg.sender, _amountOfBEE);
         payable(msg.sender).transfer((_amountOfBEE/beeExchangeRate) * 1000000000000000000);
-        emit Buy (amountOfBEE);
+        emit Buy (_amountOfBEE);
     }
 
     function shoppingWithBEE (uint _priceOfProduct) public {
-        require(balanceOf(msg.sender) >= _amountOfBEE, "Insufficient BEE balance");
-        _burn(msg.sender, _amountOfBEE);
-        emit Buy (priceOfProduct);
+        require(balanceOf(msg.sender) >= _priceOfProduct, "Insufficient BEE balance");
+        _burn(msg.sender, _priceOfProduct);
+        emit Buy (_priceOfProduct);
     }
 
     function tokenURI (uint256 tokenId) public view override (ERC721, ERC721URIStorage) returns (string memory) {
