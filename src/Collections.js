@@ -110,33 +110,76 @@ function Collections() {
         <div className="arrow right" onClick={() => handleArrowClick("right")}></div>
       </div>
       <div className="additional-boxes-container">
-        <div className="additional-box additional-box1">
-          <img className ="image2" src="images/nft7.png" alt="Additional Box 1" />
-          <p>Additional Box 1 Information</p>
-          <p>Price: $75</p>
-        </div>
-        <div className="additional-box additional-box2">
-          <img className ="image3" src="images/nft6.png" alt="Additional Box 2" />
-          <p>Additional Box 2 Information</p>
-          <p>Price: $90</p>
-        </div>
-        <div className="additional-box additional-box3">
-          <img className ="image4" src="images/nftberil2.png" alt="Additional Box 3"/>
-          <p>Additional Box 3 Information</p>
-          <p>Price: $70</p>
-        </div>
-        <div className="additional-box additional-box4">
-          <img className ="image5"  src="images/nft4.png" alt="Additional Box 4"  />
-          <p>Additional Box 4 Information</p>
-          <p>Price: $100</p>
-        </div>
-        <div className="additional-box additional-box5">
-          <img className ="image6" src="images/nft1.png" alt="Additional Box 5" />
-          <p>Additional Box 5 Information</p>
-          <p>Price: $110</p>
-        </div>
-      </div>
+      <div className="additional-box additional-box1">
+  <img className="image2" src="images/nft7.png" alt="Additional Box 1" />
+
+  <div className="additional-box-details">
+    <div className="nft-details-section">
+      <p>NFT Name: City</p>
+      <p>Price: 0.5 ETH</p>
+      <p>Highest Bid: 0.6 ETH</p>
     </div>
+    <button className="buy-button">Buy Now</button>
+  </div>
+</div>
+
+<div className="additional-box additional-box2">
+  <img className="image3" src="images/nft6.png" alt="Additional Box 2" />
+
+  <div className="additional-box-details">
+    <div className="nft-details-section">
+      <p>NFT Name: Urban Sunset</p>
+      <p>Price: 0.8 ETH</p>
+      <p>Highest Bid: 1.2 ETH</p>
+    </div>
+    <button className="buy-button">Buy Now</button>
+  </div>
+</div>
+
+
+<div className="additional-box additional-box3">
+  <img className="image4" src="images/nftberil2.png" alt="Additional Box 3" />
+
+  <div className="additional-box-details">
+    <div className="nft-details-section">
+      <p>NFT Name: Skyline Dreams</p>
+      <p>Price: 0.7 ETH</p>
+      <p>Highest Bid: 1.0 ETH</p>
+    </div>
+    <button className="buy-button">Buy Now</button>
+  </div>
+</div>
+
+<div className="additional-box additional-box4">
+  <img className="image5" src="images/nft4.png" alt="Additional Box 4" />
+
+  <div className="additional-box-details">
+    <div className="nft-details-section">
+      <p>NFT Name: Metropolis</p>
+      <p>Price: 1.2 ETH</p>
+      <p>Highest Bid: 1.5 ETH</p>
+    </div>
+    <button className="buy-button">Buy Now</button>
+  </div>
+</div>
+
+
+<div className="additional-box additional-box5">
+  <img className="image6" src="images/nft1.png" alt="Additional Box 5" />
+
+  <div className="additional-box-details">
+    <div className="nft-details-section">
+      <p>NFT Name: Future City</p>
+      <p>Price: 1.5 ETH</p>
+      <p>Highest Bid: 2.0 ETH</p>
+    </div>
+    <button className="buy-button">Buy Now</button>
+  </div>
+</div>
+</div>
+
+</div>
+
   );
 }
 
