@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Mint.css'; // Import your CSS file for Mint component styling
+import { createNFT } from './Hooks/NFT_Marketplace';
 
 const Mint = () => {
   const [isSingle, setIsSingle] = useState(true);

@@ -6,8 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
-    uint private NFTCounter = 1;
-    uint private collectionCounter = 1;
+    uint NFTCounter = 1;
+    uint collectionCounter = 1;
     uint private feePercent = 5;
 
     function setFeePercent (uint _feePercent) public onlyOwner {
@@ -162,79 +162,26 @@ contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
         emit CancelAuction (_tokenID, msg.sender);
     }
 
-    /*struct ChildOutputStruct {
-        string NFTName;
-        string NFTDescription;
-        uint tokenID;
-        string tokenURI;
-        bool isNFTListed;
-        address payable highestBidder;
-        uint highestBid;
-        uint startingPrice;
-        uint deadline;
+    /*function getNFTs (uint tokenID) public view returns (string memory, string memory, uint, string memory, bool, address, uint, uint, uint) {
+        return (NFTs[tokenID].name, 
+                NFTs[tokenID].description, 
+                NFTs[tokenID].collectionID, 
+                tokenURI(tokenID), 
+                NFTs[tokenID].isListed, 
+                NFTs[tokenID].highestBidder, 
+                NFTs[tokenID].highestBid, 
+                NFTs[tokenID].startingPrice, 
+                NFTs[tokenID].deadline);
     }
 
-    struct ParentOutputStruct {
-        string collectionName;
-        string collectionDescription;
-        uint bundle_price;
-        address payable owner;
-        bool isCollectionListed;
-        ChildOutputStruct [] elements;
-    }
-
-    function listMyNFTs () public view returns (ParentOutputStruct [] memory) {
-        ParentOutputStruct [] memory output;
-
-        for (uint i = 1; i < collectionCounter; i++) {
-            if (Collections[i].owner == msg.sender) {
-                ParentOutputStruct memory parent;
-                parent.collectionName = Collections[i].name;
-                parent.collectionDescription = Collections[i].description;
-                parent.bundle_price = Collections[i].bundle_price;
-                parent.owner = Collections[i].owner;
-                parent.isCollectionListed = Collections[i].isListed;
-                for (uint j = 0; j < Collections[i].NFTs.length; j++) {
-                    ChildOutputStruct memory child;
-                    child.NFTName = NFTs[Collections[i].NFTs[j]].name;
-                    child.NFTDescription = NFTs[Collections[i].NFTs[j]].description;
-                    child.tokenID = Collections[i].NFTs[j];
-                    child.tokenURI = tokenURI(Collections[i].NFTs[j]);
-                    child.isNFTListed = NFTs[Collections[i].NFTs[j]].isListed;
-                    child.highestBidder = NFTs[Collections[i].NFTs[j]].highestBidder;
-                    child.highestBid = NFTs[Collections[i].NFTs[j]].highestBid;
-                    child.startingPrice = NFTs[Collections[i].NFTs[j]].startingPrice;
-                    child.deadline = NFTs[Collections[i].NFTs[j]].deadline;
-                    parent.elements.push(child);
-                }
-                output.push(parent);
-            }
-        }
-
-        for (uint i = 1; i < NFTCounter; i++) {
-            if (NFTs[i].owner == msg.sender && NFTs[i].collectionID == 0) {
-                ParentOutputStruct memory parent;
-                parent.collectionName = "No Collection";
-                parent.collectionDescription = "No Collection";
-                parent.bundle_price = 0;
-                parent.owner = NFTs[i].owner;
-                parent.isCollectionListed = false;
-                ChildOutputStruct memory child;
-                child.NFTName = NFTs[i].name;
-                child.NFTDescription = NFTs[i].description;
-                child.tokenID = i;
-                child.tokenURI = tokenURI(i);
-                child.isNFTListed = NFTs[i].isListed;
-                child.highestBidder = NFTs[i].highestBidder;
-                child.highestBid = NFTs[i].highestBid;
-                child.startingPrice = NFTs[i].startingPrice;
-                child.deadline = NFTs[i].deadline;
-                parent.elements.push(child);
-                output.push(parent);
-            }
-        }
-
-        return output;
+    function getCollections (uint collectionID) public view returns (uint, uint, string memory, string memory, address, bool, uint [] memory) {
+        return (Collections[collectionID].collectionId, 
+                Collections[collectionID].bundle_price, 
+                Collections[collectionID].name, 
+                Collections[collectionID].description, 
+                Collections[collectionID].owner, 
+                Collections[collectionID].isListed,
+                Collections[collectionID].NFTs);
     }*/
 
     function tokenURI (uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {

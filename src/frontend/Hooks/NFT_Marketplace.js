@@ -3,6 +3,7 @@ import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import NFT_Marketplace_ABI from '../contractsDataForHooks/NFT_Marketplace_ABI.json';
 import NFT_Marketplace_Address from '../contractsDataForHooks/NFT_Marketplace_Address.json';
+import { element } from '@rainbow-me/rainbowkit/dist/css/reset.css';
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
@@ -53,9 +54,66 @@ export async function cancelAuction () {
 }
 
 export async function getMyNFTs () {
+    const output = [];
 
+    for (i = 0; i < NFT_Marketplace.collectionCounter(); i++) {
+        const Collection = await NFT_Marketplace.Collections(i);
+        const collection = {
+            collectionID : Collection.collectionID,
+            collectionName : Collection.name,
+            collectionDescription : Collection.description,
+            bundlePrice : Collection.bundle_price,
+            owner : Collection.owner,
+            isCollectionListed : Collection.isListed,
+            elements : []
+        }
 
+        for (j = 0; j < collection.NFTs.length; j++) {
+            const token = await NFT_Marketplace.NFTs(collection.NFTs[j]);
+            elements.push({
+                NFTName : token.name,
+                NFTDescription : token.description,
+                tokenID : collection.NFTs[j],
+                tokenURI : NFT_Marketplace.tokenURI(collection.NFTs[j]),
+                isNFTListed : token.isListed,
+                highestBidder : token.highestBidder,
+                highestBid : token.highestBid,
+                startingPrice : token.startingPrice,
+                deadline : token.deadline
+            });
+        }
 
+        output.push(collection);
+    }
 
+    const noCollections = {                
+        collectionID : 0,
+        collectionName : "No Collection",
+        collectionDescription : "No Collection",
+        bundlePrice : 0,
+        owner : token.owner,
+        isCollectionListed : false,
+        elements : []
+    };
 
+    for (i = 0; i < NFT_Marketplace.NFTCounter(); i++) {
+        const token = await NFT_Marketplace.NFTs(i);
+        if (token.owner == signer.getAddress() && !token.collectionID === 0) {
+            noCollections.elements.push({
+                NFTName : token.name,
+                NFTDescription : token.description,
+                tokenID : i,
+                tokenURI : NFT_Marketplace.tokenURI(i),
+                isNFTListed : token.isListed,
+                highestBidder : token.highestBidder,
+                highestBid : token.highestBid,
+                startingPrice : token.startingPrice,
+                deadline : token.deadline
+            });
+        }
+    }
+
+    output.push(noCollections);
+
+    return output;
 }

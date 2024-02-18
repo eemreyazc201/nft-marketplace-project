@@ -1,0 +1,249 @@
+// last element of the array is "No Collection"
+
+[
+    {
+        collectionID,
+        collectionName,
+        collectionDescription,
+        bundlePrice,
+        owner,
+        isCollectionListed,
+        elements : [
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            },
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+
+            .
+            .
+            .
+
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+        ]
+    },
+    {
+        collectionID,
+        collectionName,
+        collectionDescription,
+        bundlePrice,
+        owner,
+        isCollectionListed,
+        elements : [
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            },
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+
+            .
+            .
+            .
+
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+        ]
+    },
+    {
+        collectionID,
+        collectionName,
+        collectionDescription,
+        bundlePrice,
+        owner,
+        isCollectionListed,
+        elements : [
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            },
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+
+            .
+            .
+            .
+
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+        ]
+    }
+    
+    .
+    .
+    .
+
+    {
+        collectionID,
+        collectionName,
+        collectionDescription,
+        bundlePrice,
+        owner,
+        isCollectionListed,
+        elements : [
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            },
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+
+            .
+            .
+            .
+
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+        ]
+    },
+    {
+        collectionID = 0,
+        collectionName = "No Collection",
+        collectionDescription "No Collection",
+        bundlePrice = 0,
+        owner,
+        isCollectionListed = false,
+        elements : [
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            },
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+
+            .
+            .
+            .
+
+            {
+                NFTName, 
+                NFTDescription, 
+                tokenID, 
+                tokenURI, 
+                isNFTListed, 
+                highestBidder, 
+                highestBid, 
+                startingPrice, 
+                deadline
+            }
+        ]
+    }
+]
