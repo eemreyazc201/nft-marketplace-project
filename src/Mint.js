@@ -11,7 +11,7 @@ const MintPage = () => {
   const [description, setDescription] = useState('');
   const [selectedCollection, setSelectedCollection] = useState('Collection 1');
 
-  export const getURI_fromIPFS = async (filePath) => {  //Bu fonksiyonu Akif ekledi, burda hem IPFS'e dosyayı yüklüyoz, ve URI alıyoz.
+  const getURI_fromIPFS = async (filePath) => {  //Bu fonksiyonu Akif ekledi, burda hem IPFS'e dosyayı yüklüyoz, ve URI alıyoz.
     const ipfsCID = await pinata.uploadFileToIPFS(filePath);
     return `https://gateway.pinata.cloud/ipfs/${ipfsCID}`;
   }
