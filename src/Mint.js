@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import './mint.css';
-import { getURI_fromIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
-import { getMyNFTs, createNFT, createCollection } from "./frontend/Hooks/NFT_Marketplace";
+import { uploadFileToIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
+import { getMyNFTs, createNFT } from "./frontend/Hooks/NFT_Marketplace";
 
 const MintPage = () => {
   const [information, setInformation] = useState('');
   const [price, setPrice] = useState('');
   const [file, setFile] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedCollection, setSelectedCollection] = useState('');
+  const [selectedCollection, setSelectedCollection] = useState('Collection 1');
+
+  const getURI_fromIPFS = async (filePath) => {  //Bu fonksiyonu Akif ekledi, burda hem IPFS'e dosyayı yüklüyoz, ve URI alıyoz.
+    const ipfsCID = await uploadFileToIPFS(filePath);
+    return `https://gateway.pinata.cloud/ipfs/${ipfsCID}`;
+  }
+
+  const handleSwitchChange = () => {
+    setIsSingleNFT((prev) => !prev);
+    // Reset file input and price when switching between single NFT and collection
+    setFile('');
+    setPrice('');
+    // Reset selected collection when switching to Single NFT
+    setSelectedCollection('Collection 1');
+  };
 
   const handleRemoveClick = () => {
     setInformation('');
@@ -19,7 +33,7 @@ const MintPage = () => {
   };
 
   const handleMintClick = () => {
-    // Implement minting logic here
+   
     console.log('Minting...');
   };
 
@@ -42,13 +56,13 @@ const MintPage = () => {
   }, []);
 
   const handleMintSingleNFTClick = async () => {
-    // Implement minting logic for a single NFT here
+
     const tokenURI = await getURI_fromIPFS(file);
     await createNFT(tokenURI, information, description, selectedCollection);
   };
 
   const handleMintCollectionClick = async () => {
-    // Implement minting logic for a collection here
+
     await createCollection(information, description);
   };
 
