@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './mint.css';
 import './pinata.js' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
+import { getMyNFTs, createNFT } from "./frontend/Hooks/NFT_Marketplace";
 
 const MintPage = () => {
   const [isSingleNFT, setIsSingleNFT] = useState(true);
@@ -36,6 +37,37 @@ const MintPage = () => {
     // Implement minting logic here
     console.log('Minting...');
   };
+
+
+
+
+
+
+
+
+
+
+
+
+  const collections = getMyNFTs();
+  let collectionIDs = [];
+  for (let i = 0; i < collections.length; i++) {
+    // create option for "Select Collection" -> collections[i].name
+    collectionIDs.push(collections[i].collectionID);
+  }
+
+  // createNFT (akifin yazdığı fonk, name, description, collectionIDs[/seçilen optionun sırası/]);
+
+
+
+
+
+
+
+
+
+
+  
 
   return (
     <div className="mint-container">
