@@ -1,6 +1,5 @@
 body {
-  
-  background-color: #CACACA; /* Change to the desired color */
+  @apply bg-[#CACACA] bg-cover bg-[center_top] bg-fixed;
 }
 .title {
   @apply text-[white] mb-[1_rem];
@@ -44,11 +43,4 @@ body {
 }
 .withdraw-success {
   @apply text-[green];
-}
-
-/* Ensure the background image covers the entire viewport */
-body {
-  background-size: cover;
-  background-position: center top; /* Ensure the image starts from the top and doesn't cover the navbar */
-  background-attachment: fixed; /* Prevent background from scrolling */
 }

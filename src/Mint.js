@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './mint.css';
-import { getURI_fromIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
+import { uploadFileToIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
 import { getMyNFTs, createNFT } from "./frontend/Hooks/NFT_Marketplace";
 
 const MintPage = () => {
-  const [isSingleNFT, setIsSingleNFT] = useState(true);
   const [information, setInformation] = useState('');
   const [price, setPrice] = useState('');
   const [file, setFile] = useState('');
   const [description, setDescription] = useState('');
   const [selectedCollection, setSelectedCollection] = useState('Collection 1');
+
+  const getURI_fromIPFS = async (filePath) => {  //Bu fonksiyonu Akif ekledi, burda hem IPFS'e dosyayı yüklüyoz, ve URI alıyoz.
+    const ipfsCID = await uploadFileToIPFS(filePath);
+    return `https://gateway.pinata.cloud/ipfs/${ipfsCID}`;
+  }
 
   const handleSwitchChange = () => {
     setIsSingleNFT((prev) => !prev);
@@ -51,54 +55,63 @@ const MintPage = () => {
     fetchData();
   }, []);
 
+  const handleRemoveClick = () => {
+    setInformation('');
+    setFile('');
+    setPrice('');
+    setDescription('');
+    setSelectedCollection('Collection 1');
+  };
+
+  const handleMintSingleNFTClick = async () => {
+    // Implement minting logic for a single NFT here
+    const tokenURI = await getURI_fromIPFS(file);
+    await createNFT(tokenURI, information, description, selectedCollection);
+  };
+
+  const handleMintCollectionClick = async () => {
+    // Implement minting logic for a collection here
+    await createCollection(information, description);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="mint-container">
-      <header className="mint-header">
-        <h1>Create a single NFT or a Collection!</h1>
-        <div className="switch-container">
-          <label className="switch-label">Single NFT</label>
-          <label className="switch">
-            <input type="checkbox" checked={isSingleNFT} onChange={handleSwitchChange} />
-            <span className="slider round"></span>
-          </label>
-          <label className="switch-label">Collection</label>
+      <div className="mint-section">
+        <header className="mint-header">
+          <h1>Mint a Single NFT</h1>
+        </header>
+        <div className="input-container">
+          <label>Information:</label>
+          <input type="text" value={information} onChange={(e) => setInformation(e.target.value)} />
+          <label>Description:</label>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+          <label>Choose File:</label>
+          <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
         </div>
-      </header>
-      <div className="input-container">
-        <label>Information:</label>
-        <input type="text" value={information} onChange={(e) => setInformation(e.target.value)} />
-        {isSingleNFT ? (
-          <>
-            <label>Description:</label>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-          </>
-        ) : (
-          <>
-            <label>Price:</label>
-            <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
-            <label>Select Collection:</label>
-            <select value={selectedCollection} onChange={(e) => setSelectedCollection(e.target.value)}>
-              {collections.map((collection) => (
-                <option key={collection.collectionID} value={collection.collectionID}>
-                  {collection.collectionName}
-                </option>
-              ))}
-            </select>
-           
-            <label>Choose File:</label>
-            <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
-            {/* Include the Collection Selection for Collection */}
-           
-          </>
-        )}
+        <div className="button-container">
+          <button className="remove-button" onClick={handleRemoveClick}>Remove</button>
+          <button className="mint-button" onClick={handleMintSingleNFTClick}>Mint Single NFT</button>
+        </div>
       </div>
-      <div className="button-container">
-        <button className="remove-button" onClick={handleRemoveClick}>Remove</button>
-        <button className="mint-button" onClick={handleMintClick}>Mint</button>
+
+      <div className="mint-section">
+        <header className="mint-header">
+          <h1>Create a Collection</h1>
+        </header>
+        <div className="input-container">
+          <label>Information:</label>
+          <input type="text" value={information} onChange={(e) => setInformation(e.target.value)} />
+          <label>Description:</label>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        </div>
+        <div className="button-container">
+          <button className="remove-button" onClick={handleRemoveClick}>Remove</button>
+          <button className="mint-button" onClick={handleMintCollectionClick}>Create Collection</button>
+        </div>
       </div>
     </div>
   );

@@ -6,10 +6,10 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer" style={{ backgroundImage: 'url(/images/bg-1.png)', backgroundSize: 'cover' }}>
+    <footer className="footer" style={{ backgroundImage: 'url(/images/footer.png)'}}>
       <div className="brand">
         <span>ITUBLOCKCHAIN</span>
-        <img src='images/logo.png' alt="ITUBLOCKCHAIN Logo" />
+     
       </div>
       <div className="social-icons">
         <a href="https://twitter.com/ITUblockchain" target="_blank" rel="noopener noreferrer">

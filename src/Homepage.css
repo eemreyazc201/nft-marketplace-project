@@ -1,32 +1,17 @@
 .container {
   @apply max-w-[1200px] mt-12 m-auto;
 }
-
 .is-size-2 {
-  @apply mr-[-300px] text-[white] text-center font-[extrabold] text-xl; /* Adjust the text-xl class for the desired font size */
-  margin-left: -500px;
-  margin-top: 70px;
- 
+  @apply ml-[-500px] mt-[70px];
+  @apply mr-[-300px] text-[white] text-center font-[extrabold] text-xl;
 }
-.solo{
-  @apply mr-[-300px] text-[white] text-center font-[bold] text-9xl; /* Adjust the text-xl class for the desired font size */
-  margin-left: -500px;
-  margin-top: 10px;
- 
+.solo {
+  @apply ml-[-500px] mt-2.5;
+  @apply mr-[-300px] text-[white] text-center font-[bold] text-9xl;
 }
 .lower-left-image {
-  
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  max-width: 40%; /* Adjust the maximum width if needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 50px;
-  margin-left: 80px;
-  height: 500px;
-  width: 800px;
+  @apply absolute max-w-[40%] h-auto h-[500px] w-[800px] ml-20 mb-[50px] left-0 bottom-0;
 }
-
 .columns {
   @apply justify-center pl-80;
 }
@@ -51,82 +36,39 @@
 .image-container:hover .image {
   @apply opacity-80;
 }
-
-/* Adjusted class for left position */
 .custom-margin-right {
-  margin-right: -10px; /* Adjust this value as needed */
+  @apply -mr-2.5;
 }
-
-/* Zig-zag layout adjustments */
 .column:nth-child(3),
 .column:nth-child(7) {
-  margin-left: auto; /* Align to the right */
+  @apply ml-auto;
 }
-
 .column:nth-child(4),
 .column:nth-child(5),
 .column:nth-child(6),
 .column:nth-child(8) {
-  margin-left: 0; /* Align to the left */
+  @apply ml-0;
 }
-
-/* Adjust margin for NFT 1 and NFT 2 */
 .column:nth-child(2) {
-  margin-right: -100px; /* Adjust this value as needed */
+  @apply mr-[-100px];
 }
-/* Adjust margin for NFT 1 and NFT 2 */
 .column:nth-child(3) {
-  margin-left: -100px; /* Adjust this value as needed */
+  @apply ml-[-100px];
 }
 .column:nth-child(6) {
-  margin-right: -100px; /* Adjust this value as needed */
+  @apply mr-[-100px];
 }
 .column:nth-child(7) {
-  margin-left: -100px; /* Adjust this value as needed */
+  @apply ml-[-100px];
 }
 .buttons-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-left: -310px;
+  @apply flex justify-center ml-[-310px] mt-5;
 }
-
 .create-button {
-  background-color: #FF9900;
-  color: #F0F0F0;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: none;
-  border-radius: 20px; /* Adjust this value for more or less roundness */
-  cursor: pointer;
-  font-size: 16px;
-  font-family: 'Inter', sans-serif; /* Set font-family to Inter */
-  font-weight: bold; /* Set font-weight to bold */
-  font-style: italic; /* Set font-style to italic */
-  transition: background-color 0.3s ease-in-out;
- 
+  @apply bg-[#FF9900] text-[#F0F0F0] cursor-pointer text-base font-[bold] italic transition-[background-color] duration-[0.3s] ease-[ease-in-out] mx-2.5 my-0 px-5 py-2.5 rounded-[20px] border-[none] hover:bg-[#FFD700];
+  font-family: "Inter", sans-serif;
 }
-
 .upload-button {
-  background-color: #CACACA;
-  color: #FF9900;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: 2px solid #FF9900; /* Border color for the edges */
-  border-radius: 20px; /* Adjust this value for more or less roundness */
-  cursor: pointer;
-  font-size: 16px;
-  font-family: 'Inter', sans-serif; /* Set font-family to Inter */
-  font-weight: bold; /* Set font-weight to bold */
-  font-style: italic; /* Set font-style to italic */
-  transition: background-color 0.3s ease-in-out;
-}
-
-.create-button:hover {
-  background-color: #FFD700; /* Adjust this color for the hover effect */
-}
-
-.upload-button:hover {
-  background-color: #B0B0B0; /* Adjust this color for the hover effect */
-  border-color: #FFD700; /* Border color for the edges on hover */
+  @apply bg-[#CACACA] text-[#FF9900] cursor-pointer text-base font-[bold] italic transition-[background-color] duration-[0.3s] ease-[ease-in-out] mx-2.5 my-0 px-5 py-2.5 rounded-[20px] border-2 border-solid border-[#FF9900] hover:bg-[#B0B0B0] hover:border-[#FFD700];
+  font-family: "Inter", sans-serif;
 }

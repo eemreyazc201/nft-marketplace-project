@@ -1,32 +1,12 @@
-/* Add these styles to your CSS or create a new CSS file */
-
 .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    margin-top: 15px;
-  }
-  
-  .brand {
-    display: flex;
-    align-items: center;
-  }
-  
-  .brand img {
-    width: 40px; /* Adjust the size as needed */
-    margin-left: 10px;
-  }
-  
-  .social-icons a {
-    color: #fff;
-    margin-right: 10px;
-    text-decoration: none;
-  }
-  
-  .social-icons a:hover {
-    color: #55acee; /* Change the color to match the social media platform */
-  }
-  
+  @apply flex justify-between items-center bg-[#333] text-white mt-[15px] p-2.5;
+}
+.brand {
+  @apply flex items-center;
+}
+.brand img {
+  @apply w-10 ml-2.5;
+}
+.social-icons a {
+  @apply text-white no-underline mr-2.5 hover:text-[#55acee];
+}
