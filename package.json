@@ -1,5 +1,5 @@
 {
-  "name": "faucet-ui",
+  "name": "nft-marketplace-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,6 +28,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "hardhat run ./src/backend/scripts/deploy.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
