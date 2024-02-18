@@ -1,3 +1,4 @@
+// Navbar.js
 import React from "react";
 import { WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -10,6 +11,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { mainnet, polygon, optimism, arbitrum, base, zora, sepolia } from 'wagmi/chains';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const queryClient = new QueryClient();
 const projectId = process.env.REACT_APP_PROJECT_ID;
@@ -25,7 +27,7 @@ const config = getDefaultConfig({
   ssr: true,
 });
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
@@ -46,16 +48,18 @@ export default function Navbar() {
               </div>
               <div className="navbar-menu items-center">
                 <div className="navbar-end" style={{ marginRight: '10px'}}>
-                  <a href="/" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                  <Link to="/" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
                     Home
-                  </a>
-                  <a href="collections" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                  </Link>
+                  <Link to="/collections" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
                     Collections
-                  </a>
-                
-                  <a href="mint-nft" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                  </Link>
+                  <Link to="/mint-nft" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
                     Mint NFT
-                  </a>
+                  </Link>
+                  <Link to="/my-nfts" className="navbar-item" style={{ color: '#FF9900', fontSize: '20px' }}>
+                    MyNFTs
+                  </Link>
                 </div>
               </div>
               <ConnectButton style={{ backgroundColor: '#FF9900', color: 'white' }} />
@@ -66,3 +70,5 @@ export default function Navbar() {
     </WagmiProvider>
   );
 }
+
+export default Navbar;
