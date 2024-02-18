@@ -54,7 +54,7 @@ function Collections() {
         return (
             <div className="box-content">
               <img src="images/nftberli4.png" alt="NFT3" style={{ marginTop: '-10px', width: '200px', height: '100px',marginLeft: '5px'  }}></img>
-              <p>&nbsp;&nbsp;'City'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.4 ETH</p>
+              <p>&nbsp;&nbsp;'BLOCK'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.4 ETH</p>
              <button  style={{borderRadius: '10px', marginLeft: '65px', marginTop: '-50px', border: '2px solid #FF9900', alignItems: 'center'}}>Discover</button>
             </div>
           );
@@ -62,7 +62,7 @@ function Collections() {
         return (
           <div className="box-content">
             <img src="images/nft2.png" alt="NFT3" style={{ marginTop: '-10px', width: '200px', height: '100px',marginLeft: '5px'  }}></img>
-            <p>&nbsp;&nbsp;'City'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.4 ETH</p>
+            <p>&nbsp;&nbsp;'LONDON'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.4 ETH</p>
            <button  style={{ borderRadius: '10px',marginLeft: '65px', marginTop: '-50px', border: '2px solid #FF9900', alignItems: 'center'}}>Discover</button>
           </div>
         );
@@ -70,7 +70,7 @@ function Collections() {
         return (
             <div className="box-content">
               <img src="images/nft5.png" alt="NFT3" style={{ marginTop: '-10px', width: '200px', height: '100px',marginLeft: '5px'  }}></img>
-              <p>&nbsp;&nbsp;'City'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.4 ETH</p>
+              <p>&nbsp;&nbsp;'NIGHTTIME'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.4 ETH</p>
              <button  style={{ borderRadius: '10px',marginLeft: '65px', marginTop: '-50px', border: '2px solid #FF9900', alignItems: 'center'}}>Discover</button>
             </div>
           );
@@ -86,7 +86,7 @@ function Collections() {
         return (
             <div className="box-content">
               <img src="images/nft7.png" alt="NFT3" style={{ marginTop: '-10px', width: '200px', height: '100px',marginLeft: '5px'  }}></img>
-              <p>&nbsp;&nbsp;'City'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.5 ETH</p>
+              <p>&nbsp;&nbsp;'SEA'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: 0.5 ETH</p>
              <button style={{ borderRadius: '10px',fontColor: 'green', marginLeft: '65px', marginTop: '-50px', border: '2px solid #FF9900', alignItems: 'center'}}>Discover</button>
             </div>
           );
@@ -115,7 +115,7 @@ function Collections() {
 
   <div className="additional-box-details">
     <div className="nft-details-section">
-      <p>NFT Name: City</p>
+      <p>STYLE</p>
       <p>Price: 0.5 ETH</p>
       <p>Highest Bid: 0.6 ETH</p>
     </div>
@@ -128,7 +128,7 @@ function Collections() {
 
   <div className="additional-box-details">
     <div className="nft-details-section">
-      <p>NFT Name: Urban Sunset</p>
+      <p>KARMA</p>
       <p>Price: 0.8 ETH</p>
       <p>Highest Bid: 1.2 ETH</p>
     </div>
@@ -142,7 +142,7 @@ function Collections() {
 
   <div className="additional-box-details">
     <div className="nft-details-section">
-      <p>NFT Name: Skyline Dreams</p>
+      <p>NEW GAME</p>
       <p>Price: 0.7 ETH</p>
       <p>Highest Bid: 1.0 ETH</p>
     </div>
@@ -155,7 +155,7 @@ function Collections() {
 
   <div className="additional-box-details">
     <div className="nft-details-section">
-      <p>NFT Name: Metropolis</p>
+      <p>GAMMA</p>
       <p>Price: 1.2 ETH</p>
       <p>Highest Bid: 1.5 ETH</p>
     </div>
@@ -169,7 +169,7 @@ function Collections() {
 
   <div className="additional-box-details">
     <div className="nft-details-section">
-      <p>NFT Name: Future City</p>
+      <p>CITY</p>
       <p>Price: 1.5 ETH</p>
       <p>Highest Bid: 2.0 ETH</p>
     </div>
