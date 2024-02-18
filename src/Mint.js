@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './mint.css';
-import { uploadFileToIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
+import { getURI_fromIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
 import { getMyNFTs, createNFT } from "./frontend/Hooks/NFT_Marketplace";
 
 const MintPage = () => {
@@ -10,11 +10,6 @@ const MintPage = () => {
   const [file, setFile] = useState('');
   const [description, setDescription] = useState('');
   const [selectedCollection, setSelectedCollection] = useState('Collection 1');
-
-  const getURI_fromIPFS = async (filePath) => {  //Bu fonksiyonu Akif ekledi, burda hem IPFS'e dosyayı yüklüyoz, ve URI alıyoz.
-    const ipfsCID = await uploadFileToIPFS(filePath);
-    return `https://gateway.pinata.cloud/ipfs/${ipfsCID}`;
-  }
 
   const handleSwitchChange = () => {
     setIsSingleNFT((prev) => !prev);

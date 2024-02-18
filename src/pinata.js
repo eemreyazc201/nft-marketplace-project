@@ -34,3 +34,23 @@ export const uploadFileToIPFS = async (file) => {
             };
         });
 };
+
+export async function getURI_fromIPFS (filePath) {
+    let  ipfsCID = await uploadFileToIPFS(filePath);
+    return `https://gateway.pinata.cloud/ipfs/${ipfsCID}`;
+}
+
+export async function fetchImageFromIPFS (tokenURI) {  
+    try {
+        let response = await fetch(tokenURI);
+  
+        if (response.ok) {
+            let imageBlob = await response.blob();
+            return URL.createObjectURL(imageBlob);
+        } else {
+            console.error('Failed to fetch image from IPFS:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error fetching image from IPFS:', error);
+    }
+}
