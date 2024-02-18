@@ -1,20 +1,94 @@
+
 .mint-container {
-  @apply flex flex-col items-center justify-center h-screen;
+  border: 1px solid #ccc; /* Add a border to the mint container */
+  padding: 20px; /* Add some padding for better spacing */
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
 }
-.mint-title {
-  @apply text-center text-[white] mb-5;
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 150px;
+
+  margin-top: -60px;
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
 }
-.mint-form {
-  @apply max-w-[400px] bg-[#CCCCFF] shadow-[0_0_10px_rgba(0,0,0,0.1)] p-5 rounded-lg; /* Set the background color to green */
+
+.switch {
+ 
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #999; /* Add a border to the switch */
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
 }
-.mint-form label {
-  @apply block mb-2;
+
+.switch-labels {
+  margin: 0 10px;
 }
-.mint-form input,
-.mint-form textarea,
-.mint-form button {
-  @apply w-full box-border border rounded text-sm mb-4 p-2.5 border-solid border-[#ccc];
+
+.slider {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 1px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
 }
-.mint-form button {
-  @apply bg-white text-[#4caf50] cursor-pointer transition-[background-color] duration-[0.3s] ease-[ease] hover:bg-[#e1e1e1] hover:text-[#4caf50]; /* Set the button background color */ /* Set the button text color */
+
+.switch.active .slider {
+  transform: translateX(20px);
+}
+
+/* Adjust the size of the photo upload section */
+input[type="file"] {
+  width: 400px;
+  height: 400px;
+  margin-top: 40px;
+  margin-left: 20px;
+  border: 1px solid #999; /* Add a border to the file input */
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
+}
+
+/* Add a border to the input sections for title, description, and price */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  margin-top: 5px;
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
+}
+
+/* Add a border to the buttons */
+button {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #999;
+  background-color: #fff;
+  margin-right: 10px;
+  font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font family */
+}
+
+/* Add any additional styling as needed */
+
+.upload {
+  margin-top: 50px;
+  margin-left: 25px;
+
 }

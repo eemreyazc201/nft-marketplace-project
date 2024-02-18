@@ -1,0 +1,165 @@
+/* Collections.css */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+}
+
+.rectangle {
+  position: relative;
+  width: 60%;   /* Adjust the width as needed */
+  height: 80%;
+  margin: 0 auto;
+  background-color: #CACACA;
+  border: 10px solid #FF9900; /* Set border color and width for edges */
+  border-radius: 20px; /* Set border-radius for rounded corners */
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Add smooth transition effect */
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+.box {
+  width: 30%; /* Adjust the width of each box as needed */
+  height: 70%; /* Adjust the height of each box as needed */
+  background-color: #F0F0F0; /* Set the background color for the boxes */
+  border: 5px solid #FF9900;
+  border-radius: 10px; /* Set border-radius for rounded corners */
+  margin-top: 35px;
+  margin-right: 1px; 
+
+
+
+  
+  
+}
+.hidden {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  margin-top: -20px; /* Set a negative margin to bring arrows closer to the edges */
+}
+
+.left {
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent; /* Adjust size as needed */
+  border-bottom: 20px solid transparent; /* Adjust size as needed */
+  border-right: 20px solid #FF9900; /* Adjust size and color as needed */
+}
+
+.right {
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent; /* Adjust size as needed */
+  border-bottom: 20px solid transparent; /* Adjust size as needed */
+  border-left: 20px solid #FF9900; /* Adjust size and color as needed */
+}
+.header {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+  color: #FF9900; /* Adjust the color as needed */
+  font-size: 24px; /* Adjust the font size as needed */
+  
+}
+/* Collections.css */
+/* ... (existing styles) */
+
+/* Collections.css */
+/* ... (existing styles) */
+
+.additional-boxes-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px; /* Adjust the margin as needed */
+  margin-left: 155px;
+}
+
+.additional-box {
+  width: 150px; /* Adjust the width of each additional box as needed */
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  
+}
+
+.additional-box1 {
+  width: 150px; /* Adjust the width of each additional box as needed */
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  margin-left: 100px;
+}
+
+.additional-box2 {
+  width: 150px; /* Adjust the width of each additional box as needed */
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  margin-: 110px; 
+}
+
+.additional-box3 {
+  width: 150px; /* Adjust the width of each additional box as needed */
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  margin-right: -200px; 
+}
+
+.additional-box4 {
+  width: 150px; /* Adjust the width of each additional box as needed */
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  margin-left: 200px; 
+}
+
+.additional-box5 {
+  width: 150px; 
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  margin-right: 250px; 
+}
+.image2 {
+  width: 140px; 
+  height: 140px;
+  margin-left: 3px;
+}
+.image3 {
+  width: 140px; 
+  height: 140px;
+  margin-left: 3px;
+}
+.image4 {
+  width: 140px; 
+  height: 140px;
+  margin-left: 3px;
+  
+}
+.image5 {
+  width: 140px; 
+  height: 140px;
+  margin-left: 3px;
+}
+.image6 {
+  width: 140px; 
+  height: 140px;
+  margin-left: 3px;
+}
+.additional-box6 {
+  width: 150px; /* Adjust the width of each additional box as needed */
+  height: 150px; /* Adjust the height of each additional box as needed */
+  border: 2px solid #FF9900; /* Set the border color and width for the additional boxes */
+  border-radius: 8px; /* Set border-radius for rounded corners */
+  
+}

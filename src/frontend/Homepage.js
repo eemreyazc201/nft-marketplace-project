@@ -12,6 +12,7 @@ const Homepage = () => {
 
   return (
     <div className="container mt-6 flex justify-end"style={{marginLeft: '-35px'}}>
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
       <div>
         <h2 className="is-size-2 has-text-centered" style={{ color: '#FFBB56', fontFamily: 'Inter, sans-serif',marginRight: '-400px'}}>
           <em> <b>START YOUR <font COLOR="#FF9900"> NFT</font></b>  </em>
@@ -139,7 +140,7 @@ const Homepage = () => {
           {/* NFT 8 */}
           <div className="column is-half">
             <a href="#" onClick={() => handleNFTClick("NFT 8 Name")} className="image-container relative">
-              <img src="/images/nft11.png" alt="NFT 8" className="image" />
+              <img src="/images/bg-1.png" alt="NFT 8" className="image" />
               <div className="overlay">
                 <div className="text-center">
                   <p>NFT 8 Name</p>
