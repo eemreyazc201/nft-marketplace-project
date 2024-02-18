@@ -1,6 +1,7 @@
 // MyNFTs.js
 import React, { useState, useEffect } from "react";
 import { getMyNFTs } from "./frontend/Hooks/NFT_Marketplace";
+import { fetchImageFromIPFS } from "./pinata";
 
 const MyNFTs = () => {
   const [data, setData] = useState([]);
@@ -37,6 +38,7 @@ const MyNFTs = () => {
             <div>
               {collection.elements.map((element) => (
                 <div key={element.tokenID}>
+                  <img src={fetchImageFromIPFS(element.tokenURI)} alt={element.NFTName} />
                   <h3>{element.NFTName}</h3>
                   <p>{element.NFTDescription}</p>
                   <p>
