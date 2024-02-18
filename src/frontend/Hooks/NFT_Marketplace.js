@@ -11,46 +11,46 @@ const signer = provider.getSigner();
 const NFT_Marketplace = new ethers.Contract(NFT_Marketplace_Address.address, NFT_Marketplace_ABI.abi, signer);
 
 export async function createNFT (tokenURI, name, description, collectionID) {
-    await NFT_Marketplace.createNFT(tokenURI, name, description, collectionID).wait();
-    await(await NFT_Marketplace.setApprovalForAll(marketplace.address, true)).wait()
+    NFT_Marketplace.createNFT(tokenURI, name, description, collectionID).wait();
+    (await NFT_Marketplace.setApprovalForAll(marketplace.address, true)).wait()
 }
 
 export async function createCollection (name, description) {
-    await NFT_Marketplace.createCollection(name, description).wait();
+    NFT_Marketplace.createCollection(name, description).wait();
 }
 
 export async function setCollection (collectionID, tokenID) {
-    await NFT_Marketplace.setCollection(collectionID, tokenID).wait();
+    NFT_Marketplace.setCollection(collectionID, tokenID).wait();
 }
 
 export async function setCollectionPrice (collectionID, price) {
-    await NFT_Marketplace.setCollectionPrice(collectionID, price).wait();
+    NFT_Marketplace.setCollectionPrice(collectionID, price).wait();
 
 }
 
 export async function buyCollection (collectionID) {
-    await NFT_Marketplace.buyCollection(collectionID).wait();
+    NFT_Marketplace.buyCollection(collectionID).wait();
 
 }
 
 export async function sellNFT (tokenID, startingPrice, deadline) {
     if (deadline < Date.now()) throw new Error('Deadline must be in the future');
     let uinxTime = Math.floor(deadline.getTime() / 1000);
-    await NFT_Marketplace.sellNFT(tokenID, startingPrice, unixTime).wait();
+    NFT_Marketplace.sellNFT(tokenID, startingPrice, unixTime).wait();
 }
 
 export async function bid (tokenID, etherInput) {
     let weiAmount = ethers.utils.parseEther(amount);
-    await NFT_Marketplace.bid(tokenID, { value : weiAmount }).wait();
+    NFT_Marketplace.bid(tokenID, { value : weiAmount }).wait();
 
 }
 
 export async function finishAuction (tokenID) {
-    await NFT_Marketplace.finishAuction(tokenID).wait();
+    NFT_Marketplace.finishAuction(tokenID).wait();
 }
 
 export async function cancelAuction () {
-    await NFT_Marketplace.cancelAuction(tokenID).wait();
+    NFT_Marketplace.cancelAuction(tokenID).wait();
 }
 
 export async function getMyNFTs () {
