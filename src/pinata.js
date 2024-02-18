@@ -1,5 +1,7 @@
-const apiKey = 'PINATA_API_KEY';  // Buralara sonradan ekleme yapılacak.
-const apiSecret = 'PINATA_API_SECRET';
+require("dotenv").config();
+
+const apiKey = process.env.REACT_APP_PINATA_KEY;  // Buralara sonradan ekleme yapılacak.
+const apiSecret = process.env.REACT_APP_PINATA_SECRET;
 
 const axios = require('axios');
 const FormData = require('form-data');

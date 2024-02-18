@@ -1,5 +1,4 @@
 import { ethers } from 'ethers';
-import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import NFT_Marketplace_ABI from '../contractsDataForHooks/NFT_Marketplace_ABI.json';
 import NFT_Marketplace_Address from '../contractsDataForHooks/NFT_Marketplace_ADDRESS.json';
