@@ -14,7 +14,7 @@ export async function createNFT (tokenURI, name, description, collectionID) {
 }
 
 export async function createCollection (name, description) {
-    NFT_Marketplace.createCollection(name, description).wait();
+    await NFT_Marketplace.createCollection(name, description);
 }
 
 export async function setCollection (collectionID, tokenID) {
