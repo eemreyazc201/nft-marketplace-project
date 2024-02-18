@@ -1,4 +1,4 @@
-const apiKey = process.env.REACT_APP_PINATA_KEY;  // Buralara sonradan ekleme yapılacak.
+const apiKey = process.env.REACT_APP_PINATA_KEY;
 const apiSecret = process.env.REACT_APP_PINATA_SECRET;
 
 const axios = require('axios');
