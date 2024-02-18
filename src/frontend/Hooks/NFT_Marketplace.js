@@ -11,6 +11,7 @@ const NFT_Marketplace = new ethers.Contract(NFT_Marketplace_Address.address, NFT
 
 export async function createNFT (tokenURI, name, description, collectionID) {
     await NFT_Marketplace.createNFT(tokenURI, name, description, collectionID).wait();
+    await(await nft.setApprovalForAll(marketplace.address, true)).wait()
 }
 
 export async function createCollection (name, description) {
