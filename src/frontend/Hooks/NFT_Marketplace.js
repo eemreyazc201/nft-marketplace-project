@@ -12,7 +12,7 @@ const NFT_Marketplace = new ethers.Contract(NFT_Marketplace_Address.address, NFT
 
 export async function createNFT (tokenURI, name, description, collectionID) {
     await NFT_Marketplace.createNFT(tokenURI, name, description, collectionID).wait();
-    await(await nft.setApprovalForAll(marketplace.address, true)).wait()
+    await(await NFT_Marketplace.setApprovalForAll(NFT_Marketplace_Address.address, true)).wait()
 }
 
 export async function createCollection (name, description) {
@@ -35,12 +35,12 @@ export async function buyCollection (collectionID) {
 
 export async function sellNFT (tokenID, startingPrice, deadline) {
     if (deadline < Date.now()) throw new Error('Deadline must be in the future');
-    uinxTime = Math.floor(deadline.getTime() / 1000);
+   let uinxTime = Math.floor(deadline.getTime() / 1000);
     await NFT_Marketplace.sellNFT(tokenID, startingPrice, unixTime).wait();
 }
 
 export async function bid (tokenID, etherInput) {
-    weiAmount = ethers.utils.parseEther(amount);
+    let weiAmount = ethers.utils.parseEther(amount);
     await NFT_Marketplace.bid(tokenID, { value : weiAmount }).wait();
 
 }
@@ -50,13 +50,14 @@ export async function finishAuction (tokenID) {
 }
 
 export async function cancelAuction () {
-    await NFT_Marketplace.cancelAuction(tokenID).wait();
+    let tokenID; // Add this line to define tokenID
+    await NFT_Marketplace.bid(tokenID, { value: weiAmount }).wait();
 }
 
 export async function getMyNFTs () {
     const output = [];
 
-    for (i = 0; i < NFT_Marketplace.collectionCounter(); i++) {
+    for (let i = 0; i < NFT_Marketplace.collectionCounter(); i++) {
         const Collection = await NFT_Marketplace.Collections(i);
         const collection = {
             collectionID : Collection.collectionID,
@@ -68,7 +69,7 @@ export async function getMyNFTs () {
             elements : []
         }
 
-        for (j = 0; j < collection.NFTs.length; j++) {
+        for (let j = 0; j < collection.NFTs.length; j++) {
             const token = await NFT_Marketplace.NFTs(collection.NFTs[j]);
             elements.push({
                 NFTName : token.name,
@@ -96,7 +97,7 @@ export async function getMyNFTs () {
         elements : []
     };
 
-    for (i = 0; i < NFT_Marketplace.NFTCounter(); i++) {
+    for (let i = 0; i < NFT_Marketplace.NFTCounter(); i++) {
         const token = await NFT_Marketplace.NFTs(i);
         if (token.owner == signer.getAddress() && !token.collectionID === 0) {
             noCollections.elements.push({
