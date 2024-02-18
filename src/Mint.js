@@ -1,30 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './mint.css';
 import { getURI_fromIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
-import { getMyNFTs, createNFT } from "./frontend/Hooks/NFT_Marketplace";
+import { getMyNFTs, createNFT, createCollection } from "./frontend/Hooks/NFT_Marketplace";
 
 const MintPage = () => {
   const [information, setInformation] = useState('');
   const [price, setPrice] = useState('');
   const [file, setFile] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedCollection, setSelectedCollection] = useState('Collection 1');
-
-  const handleSwitchChange = () => {
-    setIsSingleNFT((prev) => !prev);
-    // Reset file input and price when switching between single NFT and collection
-    setFile('');
-    setPrice('');
-    // Reset selected collection when switching to Single NFT
-    setSelectedCollection('Collection 1');
-  };
+  const [selectedCollection, setSelectedCollection] = useState('');
 
   const handleRemoveClick = () => {
     setInformation('');
     setFile('');
     setPrice('');
     setDescription('');
-    setSelectedCollection('Collection 1');
+    setSelectedCollection('');
   };
 
   const handleMintClick = () => {
