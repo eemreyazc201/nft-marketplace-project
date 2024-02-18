@@ -11,7 +11,7 @@ contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
     uint private feePercent = 5;
 
     function setFeePercent (uint _feePercent) public onlyOwner {
-        fee_Percent = _feePercent;
+        feePercent = _feePercent;
     }
 
     constructor() ERC721("BEE_NFT", "BEENFT") Ownable(msg.sender) {}
@@ -141,7 +141,7 @@ contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
         Items[_tokenID].highestBid = msg.value;
     }
 
-    struct ChildOutputStruct {
+    /*struct ChildOutputStruct {
         string NFTName;
         string NFTDescription;
         uint tokenID;
@@ -214,7 +214,7 @@ contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
         }
 
         return output;
-    }
+    }*/
 
     function tokenURI (uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);

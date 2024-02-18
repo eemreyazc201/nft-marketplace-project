@@ -5,7 +5,7 @@ const ALCHEMY_API_KEY = "nMv0zIx01zhL2MLPMFtybc3hrZPhLe2X";
 const ETHERSCAN_API_KEY = "AGA9WFB74T2D84V8QG6GK43HD797SUQ3H7";
 
 module.exports = {
-  solidity: "0.8.19",
+  solidity: "0.8.20",
 
   settings: {
     optimizer: {
@@ -18,7 +18,7 @@ module.exports = {
   paths: {
     artifacts: "./artifacts",
     caches: ".cache",
-    sources: "./src/contracts"
+    sources: "./src/contracts/abc",
   },
 
   defaultNetwork: "localhost",

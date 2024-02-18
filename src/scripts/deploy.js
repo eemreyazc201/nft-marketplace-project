@@ -1,12 +1,13 @@
-const { ethers } = require ("hardhat");
+const { ethers, artifacts } = require ("hardhat");
 
 async function main () {
     const [deployer] = await ethers.getSigners();
 
-    const Lock = ethers.getContractFactory("Lock");
-    const lock = await Lock.deploy("dca69df7e07e190f291d8a03f903c701c987025e24c12015b0d27521cacecd6f");
+    const Marketplace = await ethers.getContractFactory("NFT_Marketplace");
+    const marketplace = await Marketplace.deploy();
 
-    console.log(`Contract address: ${lock.address}`);
+    console.log(`Contract address: ${marketplace.address}`);
+    console.log(artifacts.readArtifactSync("NFT_Marketplace").abi);
 }
 
 main().then(() => {process.exit(0);}).catch((error) => {console.error(error); process.exit(1);});
