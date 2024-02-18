@@ -162,28 +162,6 @@ contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
         emit CancelAuction (_tokenID, msg.sender);
     }
 
-    /*function getNFTs (uint tokenID) public view returns (string memory, string memory, uint, string memory, bool, address, uint, uint, uint) {
-        return (NFTs[tokenID].name, 
-                NFTs[tokenID].description, 
-                NFTs[tokenID].collectionID, 
-                tokenURI(tokenID), 
-                NFTs[tokenID].isListed, 
-                NFTs[tokenID].highestBidder, 
-                NFTs[tokenID].highestBid, 
-                NFTs[tokenID].startingPrice, 
-                NFTs[tokenID].deadline);
-    }
-
-    function getCollections (uint collectionID) public view returns (uint, uint, string memory, string memory, address, bool, uint [] memory) {
-        return (Collections[collectionID].collectionId, 
-                Collections[collectionID].bundle_price, 
-                Collections[collectionID].name, 
-                Collections[collectionID].description, 
-                Collections[collectionID].owner, 
-                Collections[collectionID].isListed,
-                Collections[collectionID].NFTs);
-    }*/
-
     function tokenURI (uint256 tokenId) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }

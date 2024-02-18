@@ -19,12 +19,12 @@ function saveForFrontend (contract, contractName) {
     } else {
         fs.writeFileSync(
             contractsDir + `/${contractName}_ADDRESS.json`,
-            JSON.stringify({ address: contract.address }, undefined, 2)
+            JSON.stringify({ address : contract.address }, undefined, 2)
         );
 
         fs.writeFileSync(
             contractsDir + `/${contractName}_ABI.json`,
-            JSON.stringify(artifacts.readArtifactSync("NFT_Marketplace").abi, null, 2)
+            JSON.stringify({ abi : artifacts.readArtifactSync("NFT_Marketplace").abi }, null, 2)
         );
     }
 }
