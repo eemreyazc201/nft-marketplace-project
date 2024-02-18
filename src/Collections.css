@@ -163,3 +163,45 @@
   border-radius: 8px; /* Set border-radius for rounded corners */
   
 }
+.additional-box-details {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Collections.css */
+
+/* ... (existing styles) */
+
+.additional-box-details {
+  text-align: center;
+  margin-top: 10px;
+  border: solid 2px GREEN;
+}
+
+.additional-box-details p {
+  margin: 5px 0;
+  color: #333; /* Adjust text color as needed */
+}
+
+.buy-button {
+  background-color: #4CAF50; /* Green color, adjust as needed */
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buy-button:hover {
+  background-color: #45a049; /* Darker green color on hover, adjust as needed */
+}
+
+.nft-details-section {
+  margin-top: 10px;
+}
+
+.nft-details-section p {
+  margin: 5px 0;
+  color: #555; /* Adjust text color as needed */
+}
