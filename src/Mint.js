@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './mint.css';
 import { uploadFileToIPFS } from './pinata' //Akif ekledi, karışıklık olmaması için isim ekliyorum.
 import { getMyNFTs, createNFT } from "./frontend/Hooks/NFT_Marketplace";
@@ -38,36 +38,27 @@ const MintPage = () => {
     console.log('Minting...');
   };
 
+  const [collections, setCollections] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const myNFTsData = await getMyNFTs();
+        setCollections(myNFTsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, []);
 
-
-
-
-
-
-
-
-
-  const collections = getMyNFTs();
-  let collectionIDs = [];
-  for (let i = 0; i < collections.length; i++) {
-    // create option for "Select Collection" -> collections[i].name
-    collectionIDs.push(collections[i].collectionID);
+  if (loading) {
+    return <div>Loading...</div>;
   }
-
-  // createNFT (akifin yazdığı fonk, name, description, collectionIDs[/seçilen optionun sırası/]);
-
-
-
-
-
-
-
-
-
-
-  
 
   return (
     <div className="mint-container">
@@ -96,10 +87,11 @@ const MintPage = () => {
             <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
             <label>Select Collection:</label>
             <select value={selectedCollection} onChange={(e) => setSelectedCollection(e.target.value)}>
-              <option value="Collection 1">Collection 1</option>
-              <option value="Collection 2">Collection 2</option>
-              <option value="Collection 3">Collection 3</option>
-              <option value="Collection 4">Collection 4</option>
+              {collections.map((collection) => (
+                <option key={collection.collectionID} value={collection.collectionID}>
+                  {collection.collectionName}
+                </option>
+              ))}
             </select>
            
             <label>Choose File:</label>

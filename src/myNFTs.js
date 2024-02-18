@@ -1,10 +1,29 @@
 // MyNFTs.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getMyNFTs } from "./frontend/Hooks/NFT_Marketplace";
 
 const MyNFTs = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const data = getMyNFTs();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const myNFTsData = await getMyNFTs();
+        setData(myNFTsData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
