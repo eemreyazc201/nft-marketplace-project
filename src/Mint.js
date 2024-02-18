@@ -69,6 +69,14 @@ const MintPage = () => {
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
           <label>Choose File:</label>
           <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
+          <label>Select Collection:</label>
+            <select value={selectedCollection} onChange={(e) => setSelectedCollection(e.target.value)}>
+              {collections.map((collection) => (
+                <option key={collection.collectionID} value={collection.collectionID}>
+                  {collection.collectionName}
+                </option>
+              ))}
+            </select>
         </div>
         <div className="button-container">
           <button className="remove-button" onClick={handleRemoveClick}>Remove</button>
