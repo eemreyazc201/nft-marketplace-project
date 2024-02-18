@@ -54,7 +54,7 @@ export async function cancelAuction (tokenID) {
 export async function getMyNFTs () {
     const output = [];
 
-    for (let i = 0; i < NFT_Marketplace.collectionCounter(); i++) {
+    for (let i = 0; i < NFT_Marketplace.getCollectionCounter(); i++) {
         const Collection = await NFT_Marketplace.Collections(i);
         const collection = {
             collectionID : Collection.collectionID,
@@ -94,7 +94,7 @@ export async function getMyNFTs () {
         elements : []
     };
 
-    for (let i = 0; i < NFT_Marketplace.NFTCounter(); i++) {
+    for (let i = 0; i < NFT_Marketplace.getNFTCounter(); i++) {
         const token = await NFT_Marketplace.NFTs(i);
         if (token.owner == signer.getAddress() && token.collectionID === 0) {
             noCollections.elements.push({

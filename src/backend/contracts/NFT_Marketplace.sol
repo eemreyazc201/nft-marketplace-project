@@ -6,9 +6,17 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFT_Marketplace is ERC721, ERC721URIStorage, Ownable {
-    uint public NFTCounter = 1;
-    uint public collectionCounter = 1;
+    uint private NFTCounter = 1;
+    uint private collectionCounter = 1;
     uint private feePercent = 5;
+
+    function getNFTCounter () public view returns (uint) {
+        return NFTCounter;
+    }
+
+    function getCollectionCounter () public view returns (uint) {
+        return collectionCounter;
+    }
 
     function setFeePercent (uint _feePercent) public onlyOwner {
         feePercent = _feePercent;
