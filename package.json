@@ -29,6 +29,7 @@
   },
   "scripts": {
     "deploy": "hardhat run ./src/backend/scripts/deploy.js",
+    "chain" : "hardhat node",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
