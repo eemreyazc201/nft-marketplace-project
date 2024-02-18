@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const apiKey = process.env.REACT_APP_PINATA_KEY;  // Buralara sonradan ekleme yapılacak.
 const apiSecret = process.env.REACT_APP_PINATA_SECRET;
 

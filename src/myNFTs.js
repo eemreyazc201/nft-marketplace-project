@@ -1,39 +1,39 @@
 // MyNFTs.js
 import React from "react";
-import NFT_Marketplace from "./frontend/Hooks/NFT_Marketplace";
+import { getMyNFTs } from "./frontend/Hooks/NFT_Marketplace";
 
 const MyNFTs = () => {
+
+  const data = getMyNFTs();
+
   return (
-
     <div>
-      <div className="nft-item">
-        
-        <p>Collection</p>
-        
-        {}
-      </div>
-
-      <div className="nft-item">
-        {}
-        <p>Collection2</p>
-        
-        {}
-      </div>
-
-      <div className="nft-item">
-        {}
-        <p>Collection3</p>
-        
-        {}
-      </div>
-
-      <div className="nft-item">
-        {}
-        <p>Collection4</p>
-        {}
-      </div>
+      {data.map((collection) => (
+          <div key={collection.collectionID}>
+            <h2>{collection.collectionName}</h2>
+            <p>{collection.collectionDescription}</p>
+            <p>
+              {collection.isCollectionListed && `Bundle Price: ${collection.bundlePrice}`}
+            </p>
+            <div>
+              {collection.elements.map((element) => (
+                <div key={element.tokenID}>
+                  <h3>{element.NFTName}</h3>
+                  <p>{element.NFTDescription}</p>
+                  <p>
+                    {element.isNFTListed && `Starting Price: ${element.startingPrice}`}
+                  </p>
+                  <p>
+                    {element.highestBid !== 0 && `Highest Bid: ${element.highestBid}`}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+      ))}
     </div>
   );
+
 };
 
 export default MyNFTs;
