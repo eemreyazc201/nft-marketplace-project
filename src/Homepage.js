@@ -48,7 +48,7 @@ const Homepage = () => {
           {/* NFT 1 */}
           <div className="column is-half">
             <a href="#" onClick={() => handleNFTClick("NFT 1 Name")} className="image-container relative">
-              <img src="/images/nftberli1.png" alt="NFT 1" className="image" />
+              <img src="images/nftberli1.png" alt="NFT 1" className="image" />
               <div className="overlay">
                 <div className="text-center">
                   <p>NFT 1 Name</p>
