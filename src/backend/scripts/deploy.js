@@ -3,9 +3,9 @@ const { ethers, artifacts } = require ("hardhat");
 async function main () {
     const [deployer] = await ethers.getSigners();
 
-    const NFT_Marketplace = await ethers.getContractFactory("NFT_Marketplace").then((contract) => contract.deploy());
+    const Marketplace = await ethers.getContractFactory("Marketplace").then((contract) => contract.deploy());
 
-    saveForFrontend(NFT_Marketplace, "NFT_Marketplace");
+    saveForFrontend(Marketplace, "Marketplace");
 }
 
 main().then(() => {process.exit(0);}).catch((error) => {console.error(error); process.exit(1);});
@@ -24,7 +24,7 @@ function saveForFrontend (contract, contractName) {
 
         fs.writeFileSync(
             contractsDir + `/${contractName}_ABI.json`,
-            JSON.stringify({ abi : artifacts.readArtifactSync("NFT_Marketplace").abi }, null, 2)
+            JSON.stringify({ abi : artifacts.readArtifactSync("Marketplace").abi }, null, 2)
         );
     }
 }

@@ -18,7 +18,7 @@ module.exports = {
     sources: "./src/backend/contracts",
   },
 
-  defaultNetwork: "sepolia", // buraya sepolia gelecek
+  defaultNetwork: "sepolia",
 
   namedAccounts: {
     // By default, it will take the first Hardhat account as the deployer  
